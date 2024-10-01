@@ -7,6 +7,7 @@ import { handleUser } from "../src/utils/Apis.js";
 
 import VerifyLoading from "./components/VerifyLoading/VerifyLoading.jsx";
 import getCookieValue from "./utils/GetCookieId.js";
+import Cookies from 'js-cookie';
 
 const UserContext = createContext();
 export { UserContext };
@@ -17,13 +18,13 @@ function Admin() {
 
   const navigate = useNavigate();
 
-  let id = null;
+  let id = Cookies.get('id');
+  id = id ? JSON.parse(id)?.id : null;
 
   useEffect(() => {
     async function checkVerify() {
-      id = await getCookieValue("id");
       console.log(id);
-      id = id ? await JSON.parse(id)?.id : null;
+
       try {
         setLoading(true);
 
