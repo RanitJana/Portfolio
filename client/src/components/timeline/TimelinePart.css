@@ -1,0 +1,40 @@
+.timelinePart {
+    position: relative;
+    border-left: 2px solid purple;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 0rem;
+}
+
+.timelinePart>.details {
+    padding-left: 1.8rem;
+}
+
+.timelinePart>.details>.duration {
+    color: gray;
+    font-weight: bold;
+    padding-top: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.timelinePart>.details>.about {
+    padding-top: 0.5rem;
+    color: rgb(220, 220, 220);
+}
+
+.timelinePart>.achievmentImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%);
+    width: fit-content;
+
+}
+
+.timelinePart>.achievmentImage>img {
+    width: 25px;
+    background-color: rgb(53, 0, 53);
+    padding: 0.15rem;
+    border: 2px solid purple;
+    border-radius: 50%;
+}

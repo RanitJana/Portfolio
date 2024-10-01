@@ -1,0 +1,2 @@
+All the delete requests must have a header : _id "value" 
+post message,post project are also followed same convention

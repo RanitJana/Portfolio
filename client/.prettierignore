@@ -1,0 +1,9 @@
+.prettierrc
+.env
+node_modules
+/public
+eslint.*
+package.json
+package-lock.json
+vite.config.js
+*.css

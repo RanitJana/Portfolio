@@ -1,0 +1,87 @@
+.signup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 10;
+    width: min(90vw, 25rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup>div {
+    background-color: rgba(138, 0, 140, 0.204);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    gap: 1rem;
+    min-width: 100%;
+}
+
+.signup>div>form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.signup>div>form>div {
+    position: relative;
+    width: 100%;
+}
+
+.signup>div>form>.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 1rem
+}
+
+@media screen and (max-width:415px) {
+    .signup>div>form>.buttons {
+        flex-direction: column;
+    }
+}
+
+.signup>div>form>div>input,
+.signup>div>form>div>button {
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 1px solid gray;
+    padding: 0.8rem 0.5rem;
+    border-radius: 10px;
+    height: 2.7rem;
+}
+
+
+.signup>div>form>div>input {
+    margin-top: 0.25rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.711);
+}
+
+.signup>div>form>div>button {
+    color: var(--background-color--);
+    align-self: flex-end;
+    padding: 0.5rem;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(347deg, rgba(255, 255, 255, 1) 33%, rgba(186, 186, 186, 1) 62%);
+
+}
+
+.signup>div>form>div>button:hover {
+    cursor: pointer;
+}

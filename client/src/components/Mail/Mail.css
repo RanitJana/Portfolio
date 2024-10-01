@@ -1,0 +1,33 @@
+.mail>.copy>img {
+    filter: invert(100%);
+    width: 1.2rem;
+}
+
+.mail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.mail>span {
+    background-color: black;
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.mail>.copy {
+    border-left: 1px solid gray;
+    padding: 1rem;
+    background-color: rgba(128, 0, 128, 0.256);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.mail>.copy:active{
+    background-color: purple;
+}

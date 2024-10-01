@@ -1,0 +1,17 @@
+@import url('../AdminProjects/AdminProjects.css');
+
+.adminTimeline>.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.adminTimeline>.heading>button {
+    cursor: pointer;
+    width: fit-content;
+    background-color: black;
+    outline: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+}

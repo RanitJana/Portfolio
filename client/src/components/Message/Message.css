@@ -1,0 +1,69 @@
+.message>form {
+    display: flex;
+    flex-direction: column;
+}
+.message{
+    width: 100%;
+}
+
+.message>form>label {
+    align-self: flex-start;
+}
+
+.message>form>input,
+.message>form>button {
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 1px solid gray;
+    padding: 0.8rem 0.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+
+.message>form>input {
+    background-color: rgba(0, 0, 0, 0.791);
+}
+
+.message>form>button:last-child {
+    color: var(--background-color--);
+    align-self: flex-end;
+    padding: 0.8rem 1.1rem;
+    font-weight: bold;
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(347deg, rgba(255, 255, 255, 1) 33%, rgba(186, 186, 186, 1) 62%);
+
+}
+
+.message>form>button:last-child:hover {
+    cursor: pointer;
+}
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    height: 1.8rem;
+    width: 1.8rem;
+    border: 4px solid purple;
+    border-right-color: transparent;
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

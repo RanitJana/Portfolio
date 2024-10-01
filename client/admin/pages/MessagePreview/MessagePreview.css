@@ -1,0 +1,79 @@
+.messagePreview {
+    width: 100%;
+}
+
+.messagePreview>.messagePreviewChild {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.messagePreview>.messagePreviewChild>.messages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    min-height: 10rem;
+    position: relative;
+}
+
+.messagePreview>.messagePreviewChild .emptyMessage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.messagePreview>.messagePreviewChild .emptyMessage p {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: grid;
+    place-items: center;
+
+}
+
+
+@media screen and (max-width:740px) {
+    .messagePreview>.messagePreviewChild>.messages {
+        grid-template-columns: 1fr;
+    }
+}
+
+.messagePreview>.messagePreviewChild>.top {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.messagePreview button {
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+    height: 2rem;
+    width: fit-content;
+    background-color: black;
+    outline: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
+button .loader {
+    border-color: white;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-width: 0.1rem;
+    border-bottom-color: transparent;
+}

@@ -1,0 +1,119 @@
+.profilePreview {
+    width: 100%;
+    display: grid;
+    margin-top: -1rem;
+    gap: 1rem;
+    grid-template-areas:
+        "imgAndWelcome imgAndWelcome "
+        "adminAbout adminAbout"
+        "projectCount skillCount"
+        "adminProjects adminProjects"
+        "adminSkills adminTimeline"
+    ;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width:960px) {
+    .profilePreview {
+        grid-template-areas:
+            "imgAndWelcome imgAndWelcome "
+            "adminAbout adminAbout"
+            "projectCount skillCount"
+            "adminProjects adminProjects"
+            "adminTimeline adminTimeline"
+            "adminSkills adminSkills"
+        ;
+    }
+}
+
+@media screen and (max-width:565px) {
+    .profilePreview {
+        grid-template-areas:
+            "imgAndWelcome"
+            "adminAbout"
+            "projectCount"
+            "skillCount"
+            "adminProjects"
+            "adminTimeline"
+            "adminSkills"
+        ;
+        grid-template-columns: 100%;
+    }
+}
+
+.profilePreview>.adminAbout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-area: adminAbout;
+}
+
+.profilePreview>.adminAbout .share {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profilePreview>.adminAbout .share img {
+    width: 33px;
+    padding: 0.15rem;
+    background-color: rgb(229, 229, 229);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profilePreview>.adminAbout>*>span:first-child {
+    font-weight: bold;
+}
+
+.profilePreview>.adminAbout button,
+.profilePreview>.projectCount button,
+.profilePreview>.skillCount button {
+    cursor: pointer;
+    width: fit-content;
+    background-color: black;
+    outline: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.profilePreview>.adminAbout,
+.profilePreview>.projectCount,
+.profilePreview>.skillCount,
+.profilePreview>.adminSkills {
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2rem 1rem;
+}
+
+.profilePreview>.projectCount,
+.profilePreview>.skillCount {
+    grid-area: projectCount;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.profilePreview>.adminSkills {
+    grid-area: adminSkills;
+}
+
+.profilePreview>.skillCount {
+    grid-area: skillCount;
+}
+
+.profilePreview>.projectCount>span:first-child,
+.profilePreview>.skillCount>span:first-child {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.profilePreview>.projectCount>span:nth-child(2),
+.profilePreview>.skillCount>span:nth-child(2) {
+    font-weight: bolder;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,21 @@
+.error {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.error>h1 {
+    font-size: 7rem;
+}
+
+.error>p {
+    font-size: large;
+    font-weight: bold;
+}

@@ -1,0 +1,9 @@
+.timeline {
+    padding: 4rem 0;
+    border-bottom: 1px solid gray;
+}
+
+.timeline h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}

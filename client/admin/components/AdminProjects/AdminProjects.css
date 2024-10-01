@@ -1,0 +1,59 @@
+.adminProjects,
+.adminTimeline {
+    grid-area: adminProjects;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2rem 1rem;
+}
+
+.adminTimeline {
+    grid-area: adminTimeline;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.adminProjects>.table-wrapper>table,
+.adminTimeline>.table-wrapper>table {
+    margin-top: 1rem;
+    width: max(100%, 650px);
+    border-collapse: collapse;
+}
+
+.adminProjects>.table-wrapper>table>thead>tr>th,
+.adminProjects>.table-wrapper>table>tbody>tr>td,
+.adminTimeline>.table-wrapper>table>thead>tr>th,
+.adminTimeline>.table-wrapper>table>tbody>tr>td {
+    text-align: left;
+    padding: 1.2rem 0.5rem;
+}
+
+.adminProjects>.table-wrapper>table>tbody,
+.adminTimeline>.table-wrapper>table>tbody {
+    overflow-x: auto;
+    background-color: #f1f1f1;
+}
+
+.adminProjects>.table-wrapper>table>tbody>tr,
+.adminTimeline>.table-wrapper>table>tbody>tr {
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.adminProjects>.table-wrapper>table>tbody>tr>td,
+.adminTimeline>.table-wrapper>table>tbody>tr>td {
+    text-wrap: wrap;
+}
+
+.adminProjects>.table-wrapper>table>tbody>tr>td>button,
+.adminTimeline>.table-wrapper>table>tbody>tr>td>button {
+    cursor: pointer;
+    width: fit-content;
+    background-color: black;
+    outline: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+}

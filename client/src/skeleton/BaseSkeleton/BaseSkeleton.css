@@ -1,0 +1,97 @@
+.profileParent {
+    margin: 0.5em 0;
+    max-width: 400px;
+    width: 100%;
+    text-decoration: none;
+    color: transparent;
+    /* Hide text color */
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    /* For positioning the shimmer effect */
+    overflow: hidden;
+    /* Hide overflow from shimmer */
+    background-color: rgba(255, 255, 255, 0.264);
+    animation: shimmer 1.5s infinite linear;
+}
+
+/* Skeleton for image */
+.profileParent>.img {
+    max-height: 3rem;
+    min-height: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    /* Light grey for skeleton */
+    background: linear-gradient(90deg, #c5c5c5 25%, #ffffff 50%, #c5c5c5 75%);
+    /* Gradient effect */
+    background-size: 200% 100%;
+    /* To ensure the gradient moves */
+    animation: shimmer 1.5s infinite linear;
+    /* Shimmering animation */
+}
+
+/* Container for text */
+.profileParent>div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Common skeleton styles for text */
+.profileParent>div>* {
+    border-radius: 5px;
+    height: 0.6rem;
+    background-color: #e0e0e0;
+    /* Light grey for skeleton */
+    background: linear-gradient(90deg, #c5c5c5 25%, #ffffff 50%, #c5c5c5 75%);
+    /* Gradient effect */
+    background-size: 200% 100%;
+    /* To ensure the gradient moves */
+    animation: shimmer 1.5s infinite linear;
+    /* Shimmering animation */
+}
+
+/* Widths for specific elements */
+.profileParent>div>.name {
+    width: 6rem;
+}
+
+.profileParent>div>.headline {
+    width: 100%;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200%;
+    }
+
+    100% {
+        background-position: 200%;
+    }
+}
+
+/* Staggering animation for text elements */
+.profileParent>div>*:nth-child(1) {
+    animation-delay: 0.1s;
+    /* Stagger the animations */
+}
+
+.profileParent>div>*:nth-child(2) {
+    animation-delay: 0.2s;
+    /* Stagger the animations */
+}
+
+.profileParent>div>*:nth-child(3) {
+    animation-delay: 0.3s;
+    /* Stagger the animations */
+}

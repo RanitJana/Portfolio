@@ -1,0 +1,79 @@
+.skillContainer {
+    /* border: 1px solid #2626a4; */
+    /* border-radius: 10px; */
+    width: fit-content;
+    padding: 0.5em;
+    transition: all 0.3s ease-in;
+}
+
+.skillContainer:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.skillContainer i:hover {
+    cursor: pointer;
+}
+
+.skillContainer i {
+    transition: all 0.1s ease-in;
+    color: rgb(255, 255, 255);
+}
+
+.skillBox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 0.5rem 0.25rem;
+}
+
+.skillBox>.efficiency {
+    text-align: center;
+    display: grid;
+}
+
+.skillBox>.efficiency>* {
+    display: flex;
+    padding-left: 1rem;
+    align-items: center;
+}
+
+.skillBox>.efficiency>.top {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.skillBox>.efficiency>.bottom>.progressBar,
+.skillBox>.efficiency>.bottom>.progressBar>* {
+    position: relative;
+    background-color: rgb(128, 128, 128);
+    width: 100%;
+    height: 7px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skillBox>.efficiency>.bottom>.progressBar>.trackBar {
+    position: absolute;
+    background-color: purple;
+    right: 100%;
+    top: 0;
+}
+
+.skillBox>.efficiency>.bottom>.progressBar>.trackBar>.animationBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.583) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: shimmer1 1.5s infinite;
+}
+
+@keyframes shimmer1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}

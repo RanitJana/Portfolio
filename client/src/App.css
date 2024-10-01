@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    background: rgb(50, 7, 68);
+    background: radial-gradient(circle, rgba(50, 7, 68, 1) 0%, rgba(0, 0, 0, 1) 100%, rgba(2, 0, 36, 1) 100%);
+    color: var(--text-light-color--);
+    font-family: "Montserrat Alternates";
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+}
+
+.App,
+html {
+    overflow-x: hidden;
+    /* Prevents horizontal scroll */
+}
+
+.App>* {
+    width: min(800px,100%);
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}

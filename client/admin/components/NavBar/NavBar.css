@@ -1,0 +1,97 @@
+.navBar {
+    transition: all 0.3s ease;
+    transform: translate(-100%);
+    border-right: 1px solid #ccc;
+    background-color: white;
+    z-index: 99;
+}
+
+.navBar>.linkContainers {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 100dvh;
+    max-height: 100dvh;
+
+    padding: 0.6rem;
+    overflow-y: auto;
+}
+
+.navBar.navBar--open {
+    transform: translate(0%);
+}
+
+.dragToOpen img.rotated {
+    transform: rotate(180deg);
+}
+
+.navBar .dragToOpen img {
+    transition: all 0.3s ease;
+}
+
+.navBar a img,
+.navBar button img,
+.navBar .dragToOpen img {
+    width: 2.5rem;
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+}
+
+.navBar .activeNav img,
+.navBar .logout:hover img {
+    background-color: rgba(128, 128, 128, 0.362);
+    cursor: pointer;
+}
+
+.navBar .logout {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    margin-top: auto;
+    border: none;
+    background-color: white;
+}
+
+.navBar .dragToOpen {
+    height: fit-content;
+    background-color: white;
+    padding: 1rem 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+@media screen and (min-width:740px) {
+    .navBar {
+        justify-content: flex-start;
+        gap: 0.2rem;
+        position: relative;
+    }
+
+    .navBar .dragToOpen {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:740px) {
+    .navBar {
+        position: fixed;
+        transform: translate(-100%);
+        top: 0;
+    }
+
+    .navBar .dragToOpen {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(100%, -50%);
+    }
+}

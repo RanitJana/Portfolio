@@ -1,0 +1,34 @@
+.skillSection {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 4rem 0;
+}
+
+.skillSection>h2 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    width: 100%;
+}
+
+@media only screen and (max-width:510px) {
+    .skills {
+        grid-template-columns: auto;
+    }
+}
+
+.noSkill{
+    display: flex;
+    align-items: center;
+}
+.noSkill>img{
+    margin-left: 1rem;
+    width: 30px;
+}

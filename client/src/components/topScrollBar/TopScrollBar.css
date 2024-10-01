@@ -1,0 +1,10 @@
+.topScrollBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #a81ae4;
+    transition: all 0.2s linear;
+    width: 0%;
+    height: 5px;
+    z-index: 999;
+}

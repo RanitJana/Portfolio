@@ -1,0 +1,155 @@
+.allProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100dvh - 2rem);
+    min-height: fit-content;
+}
+
+.allProfile>h1 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+    width: min(100%, 400px);
+    padding-bottom: 1rem;
+}
+
+.allProfile>h1>.userLogin {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(347deg, rgba(255, 255, 255, 1) 33%, rgba(186, 186, 186, 1) 62%);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: black;
+    font-size: 1rem;
+}
+
+.allProfile>.singleProfile {
+    margin: 0.5em 0;
+    max-width: 400px;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(128, 0, 128, 0.469);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.allProfile>.singleProfile:hover {
+    scale: 1.05;
+}
+
+.allProfile>.singleProfile>div>.name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.allProfile>.singleProfile>div>.headline {
+    color: #ccc;
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    word-break: break-all;
+    max-width: 90%;
+}
+
+.allProfile>.singleProfile>.img>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.allProfile>.singleProfile>.img {
+    max-width: 3rem;
+    min-width: 3rem;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 3rem;
+    border: 1px solid white;
+}
+
+.allProfile>.owner {
+    background: radial-gradient(ellipse farthest-corner at right bottom,
+            #FEDB37 0%,
+            #FDB931 8%,
+            #9f7928 30%,
+            #8A6E2F 40%,
+            transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top,
+            #FFFFFF 0%,
+            #FFFFAC 8%,
+            #D1B464 25%,
+            #5d4a1f 62.5%,
+            #5d4a1f 100%);
+    display: flex;
+    align-items: center;
+    border: 1px solid #FFD700;
+    position: relative;
+    overflow: hidden;
+}
+
+/* The shiny stripe effect */
+.allProfile>.owner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.102) 0%,
+            rgba(255, 255, 255, 0.193) 50%,
+            rgba(255, 255, 255, 0.061) 100%);
+    transform: skewX(-20deg);
+    animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.allProfile>.owner .img {
+    border: 2px solid #FFD700;
+}
+
+.allProfile>.owner>div>.name,
+.allProfile>.owner>div>.headline {
+    color: #ffd900;
+}
+
+.allProfile>.owner>div>.name::after {
+    content: "owner";
+    position: absolute;
+    right: 0;
+    margin-right: 2rem;
+    font-size: 0.8rem;
+    color: #FFD700;
+    background: rgba(255, 215, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    transition: transform 0.3s ease;
+}

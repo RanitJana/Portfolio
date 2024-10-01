@@ -1,0 +1,73 @@
+.aboutSection {
+    padding: 4rem 0;
+    position: relative;
+
+    text-wrap: pretty;
+    font-size: 1.1rem;
+    border-bottom: 1px solid gray;
+}
+
+.aboutSection>h1,
+.aboutSection>p {
+    text-align: center;
+}
+
+.aboutSection>p {
+    color: rgb(198, 198, 198);
+    font-weight: bold;
+}
+
+.aboutSection>.info {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2rem;
+}
+
+
+.aboutSection>.info>.selfDetails::first-letter {
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 2rem;
+}
+
+.aboutSection>.info>.myImg {
+    display: flex;
+    justify-content: center;
+}
+
+.aboutSection>.info>.myImg>.shapeImage {
+    margin-top: 3rem;
+    width: min(300px, 80%);
+    aspect-ratio: 1;
+    border-radius: 30% 70% 70% 30% / 30% 29% 71% 70%;
+    overflow: hidden;
+    border: 5px solid rgb(255, 255, 255);
+    animation: borderAnimation 5s ease infinite;
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-radius: 56% 44% 56% 44% / 18% 72% 28% 82%;
+    }
+
+    33% {
+        border-radius: 32% 68% 51% 49% / 62% 20% 80% 38%;
+    }
+
+    50% {
+        border-radius: 73% 27% 39% 61% / 51% 38% 62% 49%;
+    }
+
+    80% {
+        border-radius: 51% 49% 51% 49% / 62% 54% 46% 38%;
+    }
+
+    100% {
+        border-radius: 56% 44% 56% 44% / 18% 72% 28% 82%;
+    }
+}
+
+.aboutSection>.info>.myImg>.shapeImage>img {
+    width: 100%;
+}
