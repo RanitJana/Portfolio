@@ -17,11 +17,13 @@ function Admin() {
 
   const navigate = useNavigate();
 
-  let id = getCookieValue("id");
-  id = id ? JSON.parse(id)?.id : null;
+  let id = null;
 
   useEffect(() => {
     async function checkVerify() {
+      id = await getCookieValue("id");
+      console.log(id);
+      id = id ? await JSON.parse(id)?.id : null;
       try {
         setLoading(true);
 
@@ -39,7 +41,7 @@ function Admin() {
       }
     }
     checkVerify();
-  }, [id]);
+  }, []);
 
   return (
     <div className="admin">
