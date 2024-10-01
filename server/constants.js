@@ -1,8 +1,10 @@
 const DB_NAME = "Portfolio";
 const cookieOptions = {
-  httpOnly: false,
-  secure: true,
+  httpOnly: true,        // Prevent access via JavaScript
+  secure: true,          // Ensures the cookie is sent over HTTPS
+  sameSite: 'none',       
 };
+
 
 const _envValue = Object.freeze({
   PORT: process.env.PORT,
