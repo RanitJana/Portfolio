@@ -6,7 +6,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { handleUser } from "../src/utils/Apis.js";
 
 import VerifyLoading from "./components/VerifyLoading/VerifyLoading.jsx";
-import getCookieValue from "./utils/GetCookieId.js";
+// import getCookieValue from "./utils/GetCookieId.js";
 import Cookies from 'js-cookie';
 
 const UserContext = createContext();
@@ -23,18 +23,16 @@ function Admin() {
 
   useEffect(() => {
     async function checkVerify() {
-      console.log(id);
-
       try {
         setLoading(true);
 
         let validity = await handleVerify();
 
         if (!validity.success) navigate("/login");
-        if (id) {
-          let newUser = await handleUser(id);
-          setUser(newUser);
-        }
+        let newUser = await handleUser(id);
+        setUser(newUser);
+        // if (id) {
+        // }
       } catch (error) {
         console.log(error);
       } finally {
