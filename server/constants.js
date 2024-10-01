@@ -1,8 +1,9 @@
 const DB_NAME = "Portfolio";
 const cookieOptions = {
+  maxAge: 1000 * 60 * 60 * 24 * 7,
   httpOnly: true,        // Prevent access via JavaScript
   secure: true,          // Ensures the cookie is sent over HTTPS
-  sameSite: 'none',       
+  sameSite: 'none',
 };
 
 
