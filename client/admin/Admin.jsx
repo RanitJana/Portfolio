@@ -14,11 +14,9 @@ export { UserContext };
 function Admin() {
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [id, setId] = useState({});
 
   const navigate = useNavigate();
-
-  let id = getCookieValue("id");
-  id = id ? JSON.parse(id)?.id : null;
 
   useEffect(() => {
     async function checkVerify() {
@@ -28,6 +26,11 @@ function Admin() {
         let validity = await handleVerify();
 
         if (!validity.success) navigate("/login");
+
+        let tempId = await getCookieValue('id');
+        tempId = tempId ? JSON.parse(tempId)?.id : null;
+        setId(tempId);
+
         if (id) {
           let newUser = await handleUser(id);
           setUser(newUser);
