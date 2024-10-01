@@ -1,10 +1,9 @@
 const DB_NAME = "Portfolio";
 const cookieOptions = {
-  httpOnly: true,           // Prevents JavaScript access to cookies (recommended for session/auth cookies)
-  secure: true,             // Ensures cookies are sent only over HTTPS
-  sameSite: 'None',         // Required for cross-site cookies; must be 'None' for cookies to work across domains
-  path: '/',                // Makes cookies available site-wide
-  maxAge: 24 * 60 * 60 * 1000, // Set cookie expiration (e.g., 1 day in milliseconds)
+  maxAge: 24 * 60 * 60 * 1000,
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None',
 };
 
 
