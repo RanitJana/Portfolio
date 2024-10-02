@@ -59,12 +59,14 @@ const handleUpdateSkill = AsyncHandler(async (req, res, _) => {
   }
 
   let skill = await skillSchema.findById(skillId);
-  
+
+  skill.efficiency = efficiency;
+
   skill.save({ validateBeforeSave: false });
 
   return res.status(200).json({
     success: true,
-    message: "Skill deleted successfully!",
+    message: "Skill updated successfully!",
   });
 })
 

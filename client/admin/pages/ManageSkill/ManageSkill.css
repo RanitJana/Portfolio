@@ -18,3 +18,11 @@
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
 }
+
+@media screen and (max-width:700px) {
+    .manageSkill>.adminSkills>.childSkill {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+    }
+}

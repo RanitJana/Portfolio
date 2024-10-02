@@ -4,8 +4,9 @@ import "devicon/devicon.min.css";
 import "./EditSkill.css";
 import { toastContext } from "../../../src/Index.jsx";
 import { useEffect, useRef, useState, useContext } from "react";
+import { handleUpdateSkill } from "../../utils/Apis.js";
 
-export default function EditSkill({ skill, efficiency }) {
+export default function EditSkill({ id, skill, efficiency }) {
 
     const [editEnable, setEditEnable] = useState(false);
     const [value, setValue] = useState(efficiency);
@@ -28,11 +29,14 @@ export default function EditSkill({ skill, efficiency }) {
         handleToggleOptions();
     }
 
-    function updateEfficiency() {
+    async function updateEfficiency() {
         if (!editEnable) return;
         if (value < 1 || value > 100) return toast.warning('Value must be in between 1 to 100');
         setEditEnable(false);
-        toast.success("Updated");
+        let response = await handleUpdateSkill(id, value);
+        console.log(response);
+
+        // toast.success("Updated");
     }
 
     useEffect(() => {

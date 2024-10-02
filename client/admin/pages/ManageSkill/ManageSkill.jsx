@@ -22,8 +22,6 @@ function ManageSkill() {
                 let data = await handleSkills(id);
 
                 setSkills(data);
-                console.log(data);
-
 
             } catch (error) {
                 console.log(error);
@@ -47,6 +45,7 @@ function ManageSkill() {
 
                         <EditSkill
                             key={index}
+                            id={value._id}
                             skill={value.name}
                             efficiency={value.efficiency}
                         />

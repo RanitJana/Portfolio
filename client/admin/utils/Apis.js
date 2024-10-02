@@ -147,6 +147,26 @@ const handlePostSkill = async function (name, efficiency) {
   }
 };
 
+const handleUpdateSkill = async function (id, efficiency) {
+  try {
+    let response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/skill`,
+      { efficiency },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "_id": id
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -155,4 +175,5 @@ export {
   handleGetMessage,
   handleDeleteMessage,
   handlePostSkill,
+  handleUpdateSkill
 };
