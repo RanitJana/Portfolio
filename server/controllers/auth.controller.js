@@ -134,7 +134,7 @@ const handleVerify = AsyncHandler(async (req, res, _) => {
 const handleLogOut = AsyncHandler(async (req, res, _) => {
   await req.admin.updateOne({ $unset: { refreshToken: "" } });
 
-  return res.clearCookie("accessToken").status(200).json({
+  return res.clearCookie("accessToken", cookieOptions).status(200).json({
     success: true,
     message: "Successfully logged out!",
   });
