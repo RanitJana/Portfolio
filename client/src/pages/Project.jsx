@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Project.css";
 import { useEffect, useState, useContext } from "react";
 import { handleSingleProject } from "../utils/Apis.js";
@@ -8,11 +9,11 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { toastContext } from "../Index.jsx";
-import VerifyLoading from "../../admin/components/VerifyLoading/VerifyLoading.jsx";
 
 import "devicon/devicon.min.css";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
+import HomeSkeleton from "../components/HomeSkeleton/HomeSkeleton.jsx";
 
 export default function ProjectPage() {
   const [params] = useSearchParams();
@@ -46,7 +47,7 @@ export default function ProjectPage() {
 
     return { __html: sanitizedMarkup }; // Return sanitized HTML
   };
-  if (isLoading) return <VerifyLoading />;
+  if (isLoading) return <HomeSkeleton />;
   return (
     <div className="singleProject">
       <span onClick={() => navigate(`/${id}`)}>Back</span>

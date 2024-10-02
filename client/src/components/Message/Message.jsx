@@ -55,7 +55,7 @@ function Message() {
           onChange={(e) => setContent(e.target.value)}
           placeholder="Drop your message.."
         />
-        <button type={!sending ? "submit" : ""}>
+        <button type={!sending ? "submit" : "button"}>
           {!sending && <span>Send message</span>}
           {sending && <div className="loader"></div>}
         </button>
