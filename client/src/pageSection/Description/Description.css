@@ -71,6 +71,7 @@
 
 .socialMedia {
     margin-top: 2.5rem;
+    min-height: calc(25px + 1rem);
 }
 
 .workMedia a {

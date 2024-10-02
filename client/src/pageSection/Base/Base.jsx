@@ -69,7 +69,7 @@ function Base() {
       ) : (
         <>
           <BaseSkeleton />
-          <BaseSkeleton />
+          {/* <BaseSkeleton /> */}
         </>
       )}
     </div>

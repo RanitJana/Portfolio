@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import "./constants/constant.css";
 import "./App.css";
-import ParticlesComponent from "./components/Particles/Particles.jsx";
+// import ParticlesComponent from "./components/Particles/Particles.jsx";
 import TopScrollBar from "./components/topScrollBar/TopScrollBar.jsx";
 import Mouse from "./components/Mouse/Mouse.jsx";
 import HomeSkeleton from "./components/HomeSkeleton/HomeSkeleton.jsx";
