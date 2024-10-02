@@ -1,0 +1,71 @@
+.editSkill {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+
+.editSkill>.editSkillContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.editSkill>.editSkillContainer>.more:active {
+    background-color: #cccccc95;
+
+}
+
+.editSkill>.editSkillContainer>.more {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.editSkill>.editSkillContainer>.more>.options {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 6rem;
+    transform: translate(0%, 100%);
+}
+
+.editSkill>.editSkillContainer>.more .options>button {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 1px solid white;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.editSkill>.editSkillEfficiency {
+    display: flex;
+    flex-direction: column;
+}
+
+.editSkill>.editSkillEfficiency>input[type="number"] {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+}

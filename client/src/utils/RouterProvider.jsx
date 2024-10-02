@@ -13,6 +13,7 @@ import SkillCreate from "../../admin/pages/SkillCreate/SkillCreate.jsx";
 import TimelineCreate from "../../admin/pages/TimelineCreate/TimelineCreate.jsx";
 import MessagePreview from "../../admin/pages/MessagePreview/MessagePreview.jsx";
 import ProfileEdit from "../../admin/pages/ProfileEdit/ProfileEdit.jsx";
+import ManageSkill from "../../admin/pages/ManageSkill/ManageSkill.jsx";
 import Index from "../Index.jsx";
 
 import {
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
           <Route index path="" element={<ProfilePreview />} />
           <Route path="project/create" element={<ProjectCreate />} />
           <Route path="skill/create" element={<SkillCreate />} />
+          <Route path="skill/manage" element={<ManageSkill />} />
           <Route path="timeline/create" element={<TimelineCreate />} />
           <Route path="message" element={<MessagePreview />} />
           <Route path="edit" element={<ProfileEdit />} />

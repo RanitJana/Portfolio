@@ -1,0 +1,20 @@
+.manageSkill {
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.manageSkill>.adminSkills {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.manageSkill>.adminSkills>.childSkill {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}

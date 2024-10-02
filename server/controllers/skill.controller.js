@@ -40,6 +40,34 @@ const handleDeleteSkill = AsyncHandler(async (req, res, _) => {
   });
 });
 
+const handleUpdateSkill = AsyncHandler(async (req, res, _) => {
+  let skillId = req.headers?._id;
+  const { efficiency } = req.body;
+
+  if (!efficiency) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please add efficiency'
+    })
+  }
+
+  if (!skillId) {
+    return res.status(400).json({
+      success: false,
+      message: "Please choose a valid skill",
+    });
+  }
+
+  let skill = await skillSchema.findById(skillId);
+  
+  skill.save({ validateBeforeSave: false });
+
+  return res.status(200).json({
+    success: true,
+    message: "Skill deleted successfully!",
+  });
+})
+
 const handleGetSkill = AsyncHandler(async (req, res, _) => {
   let adminId = req.params?.adminId;
 
@@ -61,4 +89,4 @@ const handleGetSkill = AsyncHandler(async (req, res, _) => {
   });
 });
 
-export { handleAddSkill, handleDeleteSkill, handleGetSkill };
+export { handleAddSkill, handleDeleteSkill, handleGetSkill, handleUpdateSkill };
