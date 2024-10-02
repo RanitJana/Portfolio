@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./ManageSkill.css";
 import EditSkill from "../../components/EditSkill/EditSkill.jsx";
 import { handleSkills } from "../../../src/utils/Apis.js";

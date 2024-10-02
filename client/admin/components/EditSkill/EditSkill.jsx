@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import "devicon/devicon.min.css";
 import "./EditSkill.css";
@@ -26,6 +25,7 @@ export default function EditSkill({ id, skill, efficiency }) {
   function handleEditButton() {
     setEditEnable(true);
     handleToggleOptions();
+    allRef.current.input.focus();
   }
 
   async function updateEfficiency() {
