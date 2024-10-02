@@ -14,6 +14,7 @@ import "devicon/devicon.min.css";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import HomeSkeleton from "../components/HomeSkeleton/HomeSkeleton.jsx";
+import Top from "../components/Top/Top.jsx";
 
 export default function ProjectPage() {
   const [params] = useSearchParams();
@@ -51,6 +52,7 @@ export default function ProjectPage() {
   if (isLoading) return <HomeSkeleton />;
   return (
     <div className="singleProject">
+      <Top />
       <span onClick={() => navigate(`/${id}`)}>
         <img src="/Images/icons8-back-48.png" alt="Back" />
       </span>

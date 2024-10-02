@@ -5,6 +5,7 @@ import About from "../pageSection/About/About.jsx";
 import Project from "../pageSection/Project/Project.jsx";
 import Contact from "../pageSection/Contact/Contact.jsx";
 import Nav from "../components/nav/Nav.jsx";
+import Top from "../components/Top/Top.jsx";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <SkillSection />
       <Project />
       <Contact />
+      <Top />
     </div>
   );
 }
