@@ -4,7 +4,7 @@ import "./App.css";
 import ParticlesComponent from "./components/Particles/Particles.jsx";
 import TopScrollBar from "./components/topScrollBar/TopScrollBar.jsx";
 import Mouse from "./components/Mouse/Mouse.jsx";
-import VerifyLoading from "../admin/components/VerifyLoading/VerifyLoading.jsx";
+import HomeSkeleton from "./components/HomeSkeleton/HomeSkeleton.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -112,7 +112,7 @@ export default function App() {
             <Outlet />
           </div>
         ) : (
-          <VerifyLoading />
+          <HomeSkeleton />
         )}
       </globalContext.Provider>
     </div>

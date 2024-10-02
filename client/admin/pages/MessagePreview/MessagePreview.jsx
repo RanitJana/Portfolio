@@ -1,6 +1,6 @@
 import "./MessagePreview.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { handleGetMessage } from "../../utils/Apis.js";
 import AdminMessage from "../../components/AdminMessage/AdminMessage.jsx";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
@@ -9,6 +9,7 @@ function MessagePreview() {
   const [isLoading, setLoading] = useState(true);
 
   const [message, setMessage] = useState(null);
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ function MessagePreview() {
       <div className="messagePreviewChild">
         <div className="top">
           <h2>Messages</h2>
-          <button onClick={() => navigate("/admin")}>
+          <button onClick={() => navigate(`/admin/${id}`)}>
             Return to Dashboard
           </button>
         </div>

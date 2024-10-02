@@ -48,7 +48,7 @@ function ParticlesComponent() {
                   enable: true,
                   area: 800,
                 },
-                value: 100,
+                value: 200,
               },
               opacity: {
                 value: 0.3,

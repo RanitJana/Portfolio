@@ -1,6 +1,7 @@
 import "./Nav.css";
 import { globalContext } from "../../App.jsx";
 import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Nav() {
   const { sectionRef } = useContext(globalContext);
@@ -14,10 +15,23 @@ function Nav() {
   const [text, setText] = useState("");
   const textRef = useRef(null);
 
+  const navigate = useNavigate();
+
   return (
     <nav>
       <ul>
-        {/* <li>A</li> */}
+        <li
+          onMouseLeave={() => {
+            textRef.current.style.opacity = 0;
+          }}
+          onMouseOver={() => {
+            textRef.current.style.opacity = 1;
+            setText("Home");
+          }}
+          onClick={() => navigate('/')}
+        >
+          <img src="/Images/icons8-home-48.png" alt="" />
+        </li>
         <li
           onMouseLeave={() => {
             textRef.current.style.opacity = 0;
