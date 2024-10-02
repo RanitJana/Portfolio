@@ -41,11 +41,12 @@ const handleLogin = AsyncHandler(async (req, res, _) => {
 
   return res
     .cookie("accessToken", accessToken, cookieOptions)
-    .cookie("id", JSON.stringify({ id: admin._id }), cookieOptions)
+    // .cookie("id", JSON.stringify({ id: admin._id }), cookieOptions)
     .status(200)
     .json({
       success: true,
       message: "Login successful",
+      id: admin._id
     });
 });
 
@@ -86,10 +87,10 @@ const handleSignUp = AsyncHandler(async (req, res, _) => {
 });
 
 const handleVerify = AsyncHandler(async (req, res, _) => {
-  let accessToken = req.cookies?.accessToken;
-  let cookieId = req.cookies?.id;
 
-  if (!accessToken || !cookieId) {
+  let accessToken = req.cookies?.accessToken;
+
+  if (!accessToken) {
     return res.status(401).json({
       success: false,
       message: "Please login first",
@@ -113,9 +114,10 @@ const handleVerify = AsyncHandler(async (req, res, _) => {
       message: "Please register yourself!",
     });
   }
-  cookieId = JSON.parse(cookieId)?.id;
 
-  if (!cookieId || admin._id.toString() !== cookieId.toString()) {
+  const headerId = req.headers?.id;
+
+  if (!headerId) {
     return res.status(401).json({
       success: false,
       message: "Please login through portal",

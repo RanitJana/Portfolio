@@ -39,7 +39,7 @@ function Login() {
       return toast.warning("Please enter your password");
     }
 
-    let { success, message } = await handleLogin(emailOrPhone, password);
+    let { success, message, id } = await handleLogin(emailOrPhone, password);
 
     setSubmit(false);
 
@@ -49,7 +49,7 @@ function Login() {
     setPassword("");
 
     toast.success(message);
-    if (success) navigate("/admin");
+    if (success) navigate(`/admin/${id}`);
   }
 
   return (

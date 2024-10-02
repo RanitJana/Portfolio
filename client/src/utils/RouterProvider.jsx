@@ -34,14 +34,16 @@ const router = createBrowserRouter(
         <Route path="*" element={<Error error={404} />} />
       </Route>
       <Route path="/admin" element={<Admin />}>
-        <Route path="" element={<Dashboard />}>
+        <Route path=":id/" element={<Dashboard />}>
           <Route index path="" element={<ProfilePreview />} />
           <Route path="project/create" element={<ProjectCreate />} />
           <Route path="skill/create" element={<SkillCreate />} />
           <Route path="timeline/create" element={<TimelineCreate />} />
           <Route path="message" element={<MessagePreview />} />
           <Route path="edit" element={<ProfileEdit />} />
+          <Route path="*" element={<Error error={404} />} />
         </Route>
+        <Route path="*" element={<Error error={404} />} />
       </Route>
     </Route>
   )

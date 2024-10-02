@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import "./NavBar.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { handleLogOut } from "../../utils/Apis.js";
 import { useState, useContext, useRef, useEffect, useCallback } from "react";
 import { toastContext } from "../../../src/Index.jsx";
@@ -12,6 +12,7 @@ function NavBar() {
   const openRef = useRef(null);
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   async function setLogOut() {
     setLoading(true);
@@ -57,7 +58,7 @@ function NavBar() {
       </div>
       <div className="linkContainers">
         <NavLink
-          to={"/admin"}
+          to={`/admin/${id}`}
           end
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
@@ -65,35 +66,35 @@ function NavBar() {
           {/* profilePreview */}
         </NavLink>
         <NavLink
-          to={"/admin/project/create"}
+          to={`/admin/${id}/project/create`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-add-folder-50.png" alt="" />
           {/* projectCreate */}
         </NavLink>
         <NavLink
-          to={"/admin/skill/create"}
+          to={`/admin/${id}/skill/create`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-design-100.png" alt="" />
           {/* SKillCreate */}
         </NavLink>
         <NavLink
-          to={"/admin/timeline/create"}
+          to={`/admin/${id}/timeline/create`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-time-machine-48.png" alt="" />
           {/* TimelineCreate */}
         </NavLink>
         <NavLink
-          to={"/admin/message"}
+          to={`/admin/${id}/message`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-message-50 (1).png" alt="" />
           {/* Message */}
         </NavLink>
         <NavLink
-          to={"/admin/edit"}
+          to={`/admin/${id}/edit`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-user-100.png" alt="" />

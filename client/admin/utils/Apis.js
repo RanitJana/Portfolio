@@ -48,13 +48,14 @@ const handleSignUp = async function (
   }
 };
 
-const handleVerify = async function () {
+const handleVerify = async function (id) {
   try {
     let response = await axios.get(
       `${import.meta.env.VITE_BACKEND_URI}/v1/verify`,
       {
         headers: {
           "Content-Type": "application/json",
+          "id": id
         },
         withCredentials: true,
       }

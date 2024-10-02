@@ -20,7 +20,6 @@ const handleUser = async function (adminId) {
 
     console.log(user);
 
-
     return user;
   } catch (error) {
     return error.response.data;
