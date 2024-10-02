@@ -18,8 +18,6 @@ const handleUser = async function (adminId) {
       )
     ).data.admin;
 
-    console.log(user);
-
     return user;
   } catch (error) {
     return error.response.data;

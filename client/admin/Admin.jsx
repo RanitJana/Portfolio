@@ -29,7 +29,6 @@ function Admin() {
         let newUser = await handleUser(id);
 
         setUser(newUser);
-
       } catch (error) {
         console.log(error);
       } finally {

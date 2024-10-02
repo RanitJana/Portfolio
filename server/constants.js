@@ -3,10 +3,8 @@ const cookieOptions = {
   maxAge: 24 * 60 * 60 * 1000,
   httpOnly: true,
   secure: true,
-  sameSite: 'None',
+  sameSite: "None",
 };
-
-
 
 const _envValue = Object.freeze({
   PORT: process.env.PORT,

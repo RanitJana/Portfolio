@@ -49,7 +49,7 @@ function ProfilePreview() {
     try {
       let title = `${user?.fullName}'s portfolio`;
       let text = `Checkout my brand new portfolio!`;
-      let url = `${window.location.href.replace("/admin", '')}`;
+      let url = `${window.location.href.replace("/admin", "")}`;
       await handleShare(title, text, url);
       toast.success("Successfully shared.");
     } catch (error) {

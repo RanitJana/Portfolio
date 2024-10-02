@@ -39,15 +39,17 @@ const handleLogin = AsyncHandler(async (req, res, _) => {
 
   admin.save();
 
-  return res
-    .cookie("accessToken", accessToken, cookieOptions)
-    // .cookie("id", JSON.stringify({ id: admin._id }), cookieOptions)
-    .status(200)
-    .json({
-      success: true,
-      message: "Login successful",
-      id: admin._id
-    });
+  return (
+    res
+      .cookie("accessToken", accessToken, cookieOptions)
+      // .cookie("id", JSON.stringify({ id: admin._id }), cookieOptions)
+      .status(200)
+      .json({
+        success: true,
+        message: "Login successful",
+        id: admin._id,
+      })
+  );
 });
 
 const handleSignUp = AsyncHandler(async (req, res, _) => {
@@ -87,7 +89,6 @@ const handleSignUp = AsyncHandler(async (req, res, _) => {
 });
 
 const handleVerify = AsyncHandler(async (req, res, _) => {
-
   let accessToken = req.cookies?.accessToken;
 
   if (!accessToken) {

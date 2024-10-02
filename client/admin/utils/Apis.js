@@ -55,7 +55,7 @@ const handleVerify = async function (id) {
       {
         headers: {
           "Content-Type": "application/json",
-          "id": id
+          id: id,
         },
         withCredentials: true,
       }
