@@ -82,13 +82,17 @@
 }
 
 .singleProject>span {
-    color: black;
-    background: linear-gradient(347deg, rgba(255, 255, 255, 1) 33%, rgba(186, 186, 186, 1) 62%);
-    padding: 0.25rem 1rem;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: bold;
+    background-color: rgba(81, 0, 81, 0.529);
+    padding: 0rem 1rem;
+    border-radius: 5px;
     cursor: pointer;
+    height: 2.5rem;
+    display: flex;
+    width: fit-content;
+}
+
+.singleProject>span>img {
+    filter: invert(100%);
 }
 
 

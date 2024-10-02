@@ -26,6 +26,7 @@ export default function ProjectPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     (async () => {
       let id = params.get("id");
       if (!id) return window.history.back();
@@ -50,7 +51,9 @@ export default function ProjectPage() {
   if (isLoading) return <HomeSkeleton />;
   return (
     <div className="singleProject">
-      <span onClick={() => navigate(`/${id}`)}>Back</span>
+      <span onClick={() => navigate(`/${id}`)}>
+        <img src="/Images/icons8-back-48.png" alt="Back" />
+      </span>
       <h1>{data.name}</h1>
       <img src={data.thumbnail} alt="" title={data.name} />
       <div className="preview" dangerouslySetInnerHTML={getMarkdownText()} />
