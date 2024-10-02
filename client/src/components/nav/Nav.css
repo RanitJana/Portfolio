@@ -8,12 +8,16 @@ nav {
 
 nav>ul {
     background: rgb(52, 4, 51);
+    background-position: center;
+    background-attachment: fixed;
+    /* Makes the background fixed */
     background: linear-gradient(171deg, rgba(52, 4, 51, 1) 0%, rgba(0, 0, 0, 1) 47%, rgba(80, 6, 78, 1) 100%);
     display: flex;
     padding: 0.5rem 1rem;
     gap: 1rem;
     border-radius: 20px;
 }
+
 
 @media screen and (max-width:376px) {
     nav>ul {

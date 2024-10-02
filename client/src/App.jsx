@@ -99,22 +99,25 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <globalContext.Provider
-        value={value}
-        style={{ position: "relative", minHeight: "100vh" }}
-      >
-        <ParticlesComponent />
-        <TopScrollBar />
-        <Mouse />
-        {!loading.isUserLoading ? (
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <Outlet />
-          </div>
-        ) : (
-          <HomeSkeleton />
-        )}
-      </globalContext.Provider>
-    </div>
+    <>
+      <div className="background-fix"></div>
+      <div className="App">
+        <globalContext.Provider
+          value={value}
+          style={{ position: "relative", minHeight: "100vh" }}
+        >
+          {/* <ParticlesComponent /> */}
+          <TopScrollBar />
+          <Mouse />
+          {!loading.isUserLoading ? (
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <Outlet />
+            </div>
+          ) : (
+            <HomeSkeleton />
+          )}
+        </globalContext.Provider>
+      </div>
+    </>
   );
 }
