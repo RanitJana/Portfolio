@@ -28,7 +28,7 @@ function Nav() {
             textRef.current.style.opacity = 1;
             setText("Home");
           }}
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         >
           <img src="/Images/icons8-home-48.png" alt="" />
         </li>

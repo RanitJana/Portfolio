@@ -25,7 +25,9 @@ function AdminProjects({ project = [] }) {
                     <button>Update</button>
                   </td>
                   <td>
-                    <button onClick={() => window.open(value.link, '_blank')} >Visit</button>
+                    <button onClick={() => window.open(value.link, "_blank")}>
+                      Visit
+                    </button>
                   </td>
                 </tr>
               );

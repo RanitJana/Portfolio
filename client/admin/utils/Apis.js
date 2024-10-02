@@ -155,7 +155,26 @@ const handleUpdateSkill = async function (id, efficiency) {
       {
         headers: {
           "Content-Type": "application/json",
-          "_id": id
+          _id: id,
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+};
+
+const handleDeleteSkill = async function (id) {
+  try {
+    let response = await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/skill`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          _id: id,
         },
         withCredentials: true,
       }
@@ -175,5 +194,6 @@ export {
   handleGetMessage,
   handleDeleteMessage,
   handlePostSkill,
-  handleUpdateSkill
+  handleUpdateSkill,
+  handleDeleteSkill,
 };

@@ -47,8 +47,8 @@ const handleUpdateSkill = AsyncHandler(async (req, res, _) => {
   if (!efficiency) {
     return res.status(400).json({
       success: false,
-      message: 'Please add efficiency'
-    })
+      message: "Please add efficiency",
+    });
   }
 
   if (!skillId) {
@@ -68,7 +68,7 @@ const handleUpdateSkill = AsyncHandler(async (req, res, _) => {
     success: true,
     message: "Skill updated successfully!",
   });
-})
+});
 
 const handleGetSkill = AsyncHandler(async (req, res, _) => {
   let adminId = req.params?.adminId;

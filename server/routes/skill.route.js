@@ -3,7 +3,7 @@ import {
   handleAddSkill,
   handleDeleteSkill,
   handleGetSkill,
-  handleUpdateSkill
+  handleUpdateSkill,
 } from "../controllers/skill.controller.js";
 import verifyUser from "../middlewares/verifyUser.middleware.js";
 
