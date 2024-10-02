@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .App {
@@ -22,7 +23,7 @@ html {
 }
 
 .App>* {
-    width: min(800px,100%);
+    width: min(800px, 100%);
 }
 
 
