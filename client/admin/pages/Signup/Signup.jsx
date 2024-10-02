@@ -114,6 +114,9 @@ function Login() {
     <>
       <div className="signup">
         <div>
+          <div className="img" onClick={() => window.history.back()}>
+            <img src="/Images/icons8-back-48.png" alt="" />
+          </div>
           <h2>Sign up</h2>
           <form onSubmit={handleSubmit}>
             <div className="name">

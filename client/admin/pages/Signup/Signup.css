@@ -20,6 +20,24 @@
     border-radius: 10px;
     gap: 1rem;
     min-width: 100%;
+    position: relative;
+}
+
+.signup>div>.img {
+    background-color: purple;
+    border-radius: 10px;
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.signup>div>.img>img {
+    filter: invert(100%);
+    width: 25px;
 }
 
 .signup>div>form {
@@ -45,7 +63,7 @@
 
 @media screen and (max-width:415px) {
     .signup>div>form>.buttons {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
 
@@ -74,6 +92,7 @@
     font-weight: bold;
     width: 100%;
     display: flex;
+    height: 2.5rem;
     justify-content: center;
     align-items: center;
     position: relative;

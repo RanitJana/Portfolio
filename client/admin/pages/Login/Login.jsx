@@ -56,6 +56,9 @@ function Login() {
     <>
       <div className="login">
         <div>
+          <div className="img" onClick={() => window.history.back()}>
+            <img src="/Images/icons8-back-48.png" alt="" />
+          </div>
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="emailOrPhone">
