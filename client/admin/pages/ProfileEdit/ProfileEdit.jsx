@@ -16,22 +16,22 @@ function ProfileEdit() {
   const [isSubmit, setSubmit] = useState(false);
 
   const [info, setInfo] = useState({
-    name: user.fullName,
-    email: user.email,
-    phone: user.phoneNumber,
-    roles: user.roles,
-    headline: user.headline,
-    about: user.aboutMe,
-    avatar: user.avatar,
-    resume: user.resume,
+    name: user?.fullName,
+    email: user?.email,
+    phone: user?.phoneNumber,
+    roles: user?.roles,
+    headline: user?.headline,
+    about: user?.aboutMe,
+    avatar: user?.avatar,
+    resume: user?.resume,
 
-    portfolio: user.portfolio,
-    linkedin: user.linkedin,
-    github: user.github,
-    instagram: user.instagram,
-    twitter: user.twitter,
-    youtube: user.youtube,
-    facebook: user.facebook,
+    portfolio: user?.portfolio,
+    linkedin: user?.linkedin,
+    github: user?.github,
+    instagram: user?.instagram,
+    twitter: user?.twitter,
+    youtube: user?.youtube,
+    facebook: user?.facebook,
   });
 
   //set text area height into its min-content
