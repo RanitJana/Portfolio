@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import "./ProfileEdit.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../Admin.jsx";
