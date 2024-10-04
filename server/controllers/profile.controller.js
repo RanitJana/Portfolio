@@ -11,6 +11,7 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
     email,
     phoneNumber,
     headline,
+    roles,
     aboutMe,
     portfolio,
     linkedin,
@@ -48,13 +49,17 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
     fs.unlinkSync(`${req.file.path}`);
   }
 
-  headline = await JSON.parse(headline);
+  roles = await JSON.parse(roles);
 
   admin.fullName = fullName;
   admin.email = email;
   admin.phoneNumber = phoneNumber;
-  if (aboutMe) admin.aboutMe = aboutMe.length ? aboutMe : "This is my about!";
-  if (headline) admin.headline = headline.length ? headline : ["Coding My Future", "Unlocking My Potential"];
+  roles = roles;
+
+  if (aboutMe) admin.aboutMe = aboutMe.length ? aboutMe : "I prefer to remain unknown, just another face in the crowd. It’s not that I have secrets to hide, but I find comfort in my anonymity. My name doesn't matter, and I’m fine with that—it allows me to move through life quietly, without the weight of expectations. People often look for labels, for ways to define others, but I'd rather let my actions speak for themselves. You don’t need to know who I am to understand what I stand for.";
+
+  if (headline) admin.headline = headline.length ? headline : "Starting my coding journey can be both exciting and overwhelming, but I don't need to worry—every great developer began where I am now. The key is to take one step at a time, learning the fundamentals and building a strong foundation. Whether I'm writing my first 'Hello, World!' or exploring new languages, I know that persistence and curiosity will be my greatest allies. Each new line of code brings me closer to creating something amazing, and with dedication, I'll be surprised at how quickly I can grow.";
+
   if (portfolio) admin.portfolio = portfolio;
   if (linkedin) admin.linkedin = linkedin;
   if (github) admin.github = github;
