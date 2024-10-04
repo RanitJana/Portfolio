@@ -6,14 +6,26 @@ function AdminRole({ roles, edible, setInfo, toast }) {
 
     function handleAddNewRole() {
         if (!edible) return;
+
+        let allRole = roleRef.current?.querySelectorAll("input");
+        let lastRole = allRole[allRole.length - 1];
+
+        let lastRoleContent = roles[roles.length - 1];
+
+        if (lastRoleContent.trim() == "") {
+            lastRole.scrollIntoView({ behavior: "smooth", block: "center" });
+            lastRole.focus();
+            return toast.warning("Every role must be filled");
+        }
+
         setInfo((prev) => ({ ...prev, roles: [...prev.roles, ""] }));
         setTimeout(() => {
-            let roles = roleRef.current?.querySelectorAll("input");
-            if (roles?.length - 1 >= 0) {
-                roles[roles?.length - 1].focus();
-                roles[roles?.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }, 0);
+            //current last role
+            allRole = roleRef.current?.querySelectorAll("input");
+            lastRole = allRole[allRole.length - 1];
+            lastRole.scrollIntoView({ behavior: "smooth", block: "center" });
+            lastRole.focus();
+        }, 100);
     }
 
     function handleDeleteRole(e, index) {
@@ -37,12 +49,16 @@ function AdminRole({ roles, edible, setInfo, toast }) {
                                 name=""
                                 id=""
                                 value={value}
-                                onChange={(e) =>
-                                    setInfo((prev) => {
-                                        let roles = prev.roles;
-                                        roles[index] = e.target.value;
-                                        return { ...prev, roles };
-                                    })
+                                onChange={
+                                    (e) => {
+
+                                        if (e.target.value.length <= 30)
+                                            setInfo((prev) => {
+                                                let roles = prev.roles;
+                                                roles[index] = e.target.value;
+                                                return { ...prev, roles };
+                                            })
+                                    }
                                 }
                             />
                             {edible ? (

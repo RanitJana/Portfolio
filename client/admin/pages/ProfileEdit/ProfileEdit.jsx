@@ -115,7 +115,7 @@ function ProfileEdit() {
             }
           />
 
-          <label htmlFor="roles">Roles</label>
+          <label htmlFor="roles">Roles <span style={{ color: "gray", fontSize: "0.7rem" }}>(max 30char each box)</span></label>
           <AdminRole
             roles={info.roles}
             edible={edible}

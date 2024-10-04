@@ -1,17 +1,8 @@
-.adminRoles>.roles>input {
-    resize: none;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-
-}
-
 .adminRoles>.roles {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-}
+} 
 
 .adminRoles>.roles>img {
     height: 2.1rem;
@@ -26,6 +17,11 @@
     width: fit-content;
     padding-right: 2.5rem;
 }
+
+.adminRoles>.roles>.role>input:focus {
+    border-color: skyblue;
+}
+
 
 .adminRoles>.roles>.role {
     position: relative;
