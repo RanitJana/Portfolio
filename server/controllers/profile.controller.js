@@ -49,12 +49,11 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
     fs.unlinkSync(`${req.file.path}`);
   }
 
-  roles = await JSON.parse(roles);
 
   admin.fullName = fullName;
   admin.email = email;
   admin.phoneNumber = phoneNumber;
-  roles = roles;
+  admin.roles = await JSON.parse(roles);
 
   if (aboutMe) admin.aboutMe = aboutMe.length ? aboutMe : "I prefer to remain unknown, just another face in the crowd. It’s not that I have secrets to hide, but I find comfort in my anonymity. My name doesn't matter, and I’m fine with that—it allows me to move through life quietly, without the weight of expectations. People often look for labels, for ways to define others, but I'd rather let my actions speak for themselves. You don’t need to know who I am to understand what I stand for.";
 
