@@ -5,6 +5,7 @@ import { toastContext } from "../../../src/Index.jsx";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 import AdminRole from "../../components/AdminRoles/AdminRole.jsx";
 import { handleUpdateProfile } from "../../utils/Apis.js";
+import { useParams } from "react-router-dom";
 
 function ProfileEdit() {
   const { user } = useContext(UserContext);
@@ -14,6 +15,8 @@ function ProfileEdit() {
   const [edible, setEdible] = useState(false);
 
   const [isSubmit, setSubmit] = useState(false);
+
+  const { id } = useParams();
 
   const [info, setInfo] = useState({
     name: user?.fullName,
@@ -25,7 +28,7 @@ function ProfileEdit() {
     avatar: user?.avatar,
     resume: user?.resume,
 
-    portfolio: user?.portfolio,
+    portfolio: window.location.href.split('/')[0] + "//" + window.location.href.split('/')[1] + window.location.href.split('/')[2] + '/' + id,
     linkedin: user?.linkedin,
     github: user?.github,
     instagram: user?.instagram,
