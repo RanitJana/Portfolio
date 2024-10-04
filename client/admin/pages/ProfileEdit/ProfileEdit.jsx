@@ -115,7 +115,12 @@ function ProfileEdit() {
             }
           />
 
-          <label htmlFor="roles">Roles <span style={{ color: "gray", fontSize: "0.7rem" }}>(max 30char each box)</span></label>
+          <label htmlFor="roles">
+            Roles{" "}
+            <span style={{ color: "gray", fontSize: "0.7rem" }}>
+              (max 30char each box)
+            </span>
+          </label>
           <AdminRole
             roles={info.roles}
             edible={edible}
@@ -150,7 +155,7 @@ function ProfileEdit() {
           {/* socical media */}
           <label htmlFor="portfolio">Portfolio</label>
           <input
-            style={{ color: edible ? "black" : "gray" }}
+            style={{ color: "gray" }}
             type="text"
             name="name"
             id="portfolio"
@@ -200,7 +205,7 @@ function ProfileEdit() {
             id="instagram"
             value={info.instagram}
             onChange={(e) =>
-              setInfo((prev) => ({ ...prev, linkedin: e.target.value }))
+              setInfo((prev) => ({ ...prev, instagram: e.target.value }))
             }
           />
 
@@ -215,7 +220,7 @@ function ProfileEdit() {
             id="twitter"
             value={info.twitter}
             onChange={(e) =>
-              setInfo((prev) => ({ ...prev, linkedin: e.target.value }))
+              setInfo((prev) => ({ ...prev, twitter: e.target.value }))
             }
           />
 
@@ -230,7 +235,7 @@ function ProfileEdit() {
             id="facebook"
             value={info.facebook}
             onChange={(e) =>
-              setInfo((prev) => ({ ...prev, linkedin: e.target.value }))
+              setInfo((prev) => ({ ...prev, facebook: e.target.value }))
             }
           />
           <div className="buttons">
