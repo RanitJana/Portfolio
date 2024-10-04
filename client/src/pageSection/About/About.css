@@ -40,7 +40,6 @@
     margin-top: 3rem;
     width: min(300px, 80%);
     aspect-ratio: 1;
-    border-radius: 30% 70% 70% 30% / 30% 29% 71% 70%;
     overflow: hidden;
     border: 5px solid rgb(255, 255, 255);
     animation: borderAnimation 6s infinite linear;
@@ -71,4 +70,6 @@
 
 .aboutSection>.info>.myImg>.shapeImage>img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
