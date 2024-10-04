@@ -1,0 +1,51 @@
+.adminRoles>.roles>input {
+    resize: none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.adminRoles>.roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.adminRoles>.roles>img {
+    height: 2.1rem;
+    border-radius: 5px;
+    padding: 0.2rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.adminRoles>.roles>.role>input {
+    max-width: 15rem;
+    width: fit-content;
+    padding-right: 2.5rem;
+}
+
+.adminRoles>.roles>.role {
+    position: relative;
+}
+
+.adminRoles>.roles>.role>.deleteRole {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.adminRoles>.roles>.role>.deleteRole>img {
+    height: 100%;
+    object-fit: contain;
+    padding: 0.2rem;
+    transform: rotate(45deg);
+}

@@ -1,0 +1,103 @@
+.profileEdit {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profileEdit>h2 {
+    margin-bottom: 2rem;
+}
+
+.profileEdit>.imgResume {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem;
+}
+
+.profileEdit>.info>form>input[type="file"] {
+    display: none;
+}
+
+.profileEdit>.imgResume>*>label {
+    width: fit-content;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+
+}
+
+.profileEdit>.imgResume>* {
+    text-align: left;
+    display: grid;
+}
+
+.profileEdit>.imgResume>*>img {
+    height: 20rem;
+    width: 20rem;
+    object-fit: contain;
+}
+
+
+@media screen and (max-width:765px) {
+    .profileEdit>.imgResume {
+        gap: 1rem;
+        grid-template-columns: 1fr;
+    }
+
+    .profileEdit>.imgResume>* {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        text-align: left;
+        display: grid;
+    }
+
+    .profileEdit>.imgResume>*>img {
+        height: 20rem;
+        width: 15rem;
+        object-fit: contain;
+    }
+}
+
+
+.profileEdit>.info>form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profileEdit>.info>form>label {
+    margin-bottom: -0.5rem;
+}
+
+.profileEdit>.info>form>textarea:focus,
+.profileEdit>.info>form>input:focus {
+    border-color: aquamarine;
+}
+
+.profileEdit>.info>form>textarea,
+.profileEdit>.info>form input {
+    resize: none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.profileEdit>.info>form>.buttons {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.profileEdit>.info>form>.buttons>button,
+.profileEdit>.imgResume>*>label {
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
