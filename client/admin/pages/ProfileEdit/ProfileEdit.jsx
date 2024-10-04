@@ -4,6 +4,7 @@ import { UserContext } from "../../Admin.jsx";
 import { toastContext } from "../../../src/Index.jsx";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 import AdminRole from "../../components/AdminRoles/AdminRole.jsx";
+import { handleUpdateProfile } from "../../utils/Apis.js";
 
 function ProfileEdit() {
   const { user } = useContext(UserContext);
@@ -38,9 +39,42 @@ function ProfileEdit() {
     });
   }, [info.headline, info.about]);
 
-  function handleFormSubmit(e) {
+  async function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(e.target[0].value)
+
+    const formData = new FormData();
+
+    // Append the non-file fields
+    formData.append("fullName", info.name);
+    formData.append("email", info.email);
+    formData.append("phoneNumber", info.phone);
+    formData.append("roles", JSON.stringify(info.roles));
+    formData.append("headline", info.headline);
+    formData.append("aboutMe", info.about);
+    formData.append("linkedin", info.linkedin);
+    formData.append("github", info.github);
+    formData.append("instagram", info.instagram);
+    formData.append("twitter", info.twitter);
+    formData.append("facebook", info.facebook);
+    formData.append("youtube", info.youtube);
+
+    // Append the files if present
+    const avatarFile = document.getElementById('avatarFile').files[0];
+    const resumeFile = document.getElementById('resumeFile').files[0];
+
+    if (avatarFile) {
+      formData.append("avatar", avatarFile);
+    }
+
+    if (resumeFile) {
+      // formData.append("resume", resumeFile);
+    }
+
+    let { success, message } = await handleUpdateProfile(formData);
+
+    if (success) toast.success(message);
+    else toast.error(message);
+
   }
 
   if (!user) return <AdminSkeleton />;
