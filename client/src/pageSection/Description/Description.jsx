@@ -122,7 +122,7 @@ function Description() {
           <img src="/Images/github.png" alt="GitHub" />
           <span>Github</span>
         </Link>
-        <Link to="/resume" target="_blank">
+        <Link to={user?.resume || "/Images/resume-eg.png"} target="_blank">
           <img src="/Images/external-link.png" alt="Link" />
           <span>Resume</span>
         </Link>
