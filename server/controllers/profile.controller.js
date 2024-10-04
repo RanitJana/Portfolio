@@ -10,6 +10,7 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
     fullName,
     email,
     phoneNumber,
+    headline,
     aboutMe,
     portfolio,
     linkedin,
@@ -51,6 +52,7 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
   admin.email = email;
   admin.phoneNumber = phoneNumber;
   if (aboutMe) admin.aboutMe = aboutMe.length ? aboutMe : "This is my about!";
+  if (headline) admin.headline = headline.length ? JSON.parse(headline) : ["Coding My Future", "Unlocking My Potential"];
   if (portfolio) admin.portfolio = portfolio;
   if (linkedin) admin.linkedin = linkedin;
   if (github) admin.github = github;

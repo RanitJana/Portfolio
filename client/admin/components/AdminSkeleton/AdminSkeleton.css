@@ -50,6 +50,6 @@
     animation-delay: 0.5s;
 }
 
-.adminSkeleton>.skeletonAbout:nth-child(1) {
+.adminSkeleton>.skeletonAbout:nth-child(2) {
     animation-delay: 1s;
 }

@@ -48,7 +48,6 @@ function Login() {
     setEmailOrPhone("");
     setPassword("");
 
-    toast.success(message);
     if (success) navigate(`/admin/${id}`);
   }
 

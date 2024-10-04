@@ -40,7 +40,7 @@ function ProfileEdit() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(1);
+    console.log(e.target[0].value)
   }
 
   if (!user) return <AdminSkeleton />;
