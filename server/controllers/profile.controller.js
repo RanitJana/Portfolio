@@ -1,6 +1,6 @@
 import AsyncHandler from "../utils/AsyncHandler.js";
 import adminSchema from "../models/admin.model.js";
-import uploadImage from "../utils/cloudinary.js";
+import uploadImage, { deleteImage } from "../utils/cloudinary.js";
 import fs from "fs";
 import jwt from "jsonwebtoken";
 import { _envValue } from "../constants.js";
@@ -42,6 +42,7 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
 
   let admin = req.admin;
   if (req.files?.avatar) {
+    if (admin.avatar != "") await deleteImage(admin.avatar);
     const avatarPath = req.files.avatar[0].path;
     const avatarName = req.files.avatar[0].filename;
     const avatarUrl = (await uploadImage(avatarPath, avatarName)).secure_url;
@@ -51,6 +52,7 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
   }
 
   if (req.files?.resume) {
+    if (admin.resume != "") await deleteImage(admin.resume);
     const resumePath = req.files.resume[0].path;
     const resumeName = req.files.resume[0].filename;
     const resumeUrl = (await uploadImage(resumePath, resumeName)).secure_url;

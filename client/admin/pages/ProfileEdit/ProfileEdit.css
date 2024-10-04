@@ -93,9 +93,11 @@
 
 .profileEdit>.info>form>.buttons>button,
 .profileEdit>.imgResume>*>label {
+    position: relative;
     border-radius: 5px;
     background-color: black;
     color: white;
+    min-height: 2rem;
     padding: 0.5rem;
     outline: none;
     border: none;

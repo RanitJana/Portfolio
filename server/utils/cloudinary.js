@@ -15,4 +15,20 @@ const uploadImage = async function (filePath, name) {
     });
   return uploadResult;
 };
+const deleteImage = async function (url) {
+  let urlPUblicId = url.split("/");
+
+  urlPUblicId = urlPUblicId[urlPUblicId.length - 1].split(".");
+
+  let publicId = urlPUblicId[0];
+
+  if (urlPUblicId.length > 2) publicId += "." + urlPUblicId[1];
+
+  try {
+    await cloudinary.uploader.destroy(publicId);
+  } catch (err) {
+    console.error("Error deleting image:", err);
+  }
+};
+export { deleteImage };
 export default uploadImage;

@@ -13,6 +13,8 @@ function ProfileEdit() {
 
   const [edible, setEdible] = useState(false);
 
+  const [isSubmit, setSubmit] = useState(false);
+
   const [info, setInfo] = useState({
     name: user.fullName,
     email: user.email,
@@ -20,6 +22,8 @@ function ProfileEdit() {
     roles: user.roles,
     headline: user.headline,
     about: user.aboutMe,
+    avatar: user.avatar,
+    resume: user.resume,
 
     portfolio: user.portfolio,
     linkedin: user.linkedin,
@@ -41,6 +45,9 @@ function ProfileEdit() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
+
+    setSubmit(true);
+    setEdible(false);
 
     const formData = new FormData();
 
@@ -72,6 +79,8 @@ function ProfileEdit() {
 
     let { success, message } = await handleUpdateProfile(formData);
 
+    setSubmit(false);
+
     if (success) toast.success(message);
     else toast.error(message);
   }
@@ -84,7 +93,7 @@ function ProfileEdit() {
       <div className="imgResume">
         <div className="img">
           <span>Profile Image</span>
-          <img src={user?.avatar || "/Images/developer_5813665.png"} alt="" />
+          <img src={info.avatar || "/Images/developer_5813665.png"} alt="Avater" />
           {edible ? (
             <>
               <label htmlFor="avatarFile">Upload Avatar</label>
@@ -95,7 +104,7 @@ function ProfileEdit() {
         </div>
         <div className="resume">
           <span>Resume</span>
-          <img src={user?.resume || "/Images/resume-eg.png"} alt="Empty" />
+          <img src={info.resume || "/Images/resume-eg.png"} alt="Resume" onClick={() => window.open(info.resume || "/Images/resume-eg.png", '_blank')} />
           {edible ? (
             <>
               <label htmlFor="resumeFile">Upload Resume</label>
@@ -107,8 +116,36 @@ function ProfileEdit() {
       </div>
       <div className="info">
         <form onSubmit={handleFormSubmit}>
-          <input type="file" name="" id="avatarFile" />
-          <input type="file" name="" id="resumeFile" />
+          <input
+            type="file"
+            accept="image/*"
+            name=""
+            id="avatarFile"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file) {
+                setInfo((prev) => ({
+                  ...prev,
+                  avatar: URL.createObjectURL(file),
+                }));
+              }
+            }}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            name=""
+            id="resumeFile"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file) {
+                setInfo((prev) => ({
+                  ...prev,
+                  resume: URL.createObjectURL(file),
+                }));
+              }
+            }}
+          />
           <label htmlFor="name">Full Name</label>
           <input
             readOnly={!edible}
@@ -272,13 +309,20 @@ function ProfileEdit() {
             }
           />
           <div className="buttons">
-            <button
-              onClick={() => setEdible((prev) => !prev)}
-              type={!edible ? "submit" : "button"}
-            >
-              {edible ? "Save" : "Edit"}
-            </button>
             {edible ? (
+              <button type="submit">Save</button>
+            ) : (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!isSubmit) setEdible(true);
+                }}
+              >
+                {isSubmit ? <span className="loader"></span> : "Edit"}
+              </button>
+            )}
+            {edible && !isSubmit ? (
               <button type="button" onClick={() => setEdible(false)}>
                 Cancel
               </button>
