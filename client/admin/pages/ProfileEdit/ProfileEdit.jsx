@@ -59,22 +59,21 @@ function ProfileEdit() {
     formData.append("youtube", info.youtube);
 
     // Append the files if present
-    const avatarFile = document.getElementById('avatarFile').files[0];
-    const resumeFile = document.getElementById('resumeFile').files[0];
+    const avatarFile = document.getElementById("avatarFile").files[0];
+    const resumeFile = document.getElementById("resumeFile").files[0];
 
     if (avatarFile) {
       formData.append("avatar", avatarFile);
     }
 
     if (resumeFile) {
-      // formData.append("resume", resumeFile);
+      formData.append("resume", resumeFile);
     }
 
     let { success, message } = await handleUpdateProfile(formData);
 
     if (success) toast.success(message);
     else toast.error(message);
-
   }
 
   if (!user) return <AdminSkeleton />;

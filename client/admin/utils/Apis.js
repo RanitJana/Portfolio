@@ -188,21 +188,24 @@ const handleDeleteSkill = async function (id) {
 
 const handleUpdateProfile = async function (formData) {
   try {
-    let response = await axios.put(`${import.meta.env.VITE_BACKEND_URI}/v1/profile`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      withCredentials: true
-    })
+    let response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/profile`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      }
+    );
     console.log(response);
 
     return response.data;
-    
   } catch (error) {
     console.log(error);
     return error.response?.data;
   }
-}
+};
 
 export {
   handleLogin,
@@ -214,5 +217,5 @@ export {
   handlePostSkill,
   handleUpdateSkill,
   handleDeleteSkill,
-  handleUpdateProfile
+  handleUpdateProfile,
 };

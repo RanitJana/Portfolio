@@ -41,23 +41,38 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
   }
 
   let admin = req.admin;
-  if (req.file) {
-    let avatar = (await uploadImage(req.file.path, req.file.filename))
-      .secure_url;
-    admin.avatar = avatar;
+  if (req.files?.avatar) {
+    const avatarPath = req.files.avatar[0].path;
+    const avatarName = req.files.avatar[0].filename;
+    const avatarUrl = (await uploadImage(avatarPath, avatarName)).secure_url;
+    admin.avatar = avatarUrl;
 
-    fs.unlinkSync(`${req.file.path}`);
+    fs.unlinkSync(avatarPath);
   }
 
+  if (req.files?.resume) {
+    const resumePath = req.files.resume[0].path;
+    const resumeName = req.files.resume[0].filename;
+    const resumeUrl = (await uploadImage(resumePath, resumeName)).secure_url;
+    admin.resume = resumeUrl;
+
+    fs.unlinkSync(resumePath);
+  }
 
   admin.fullName = fullName;
   admin.email = email;
   admin.phoneNumber = phoneNumber;
   admin.roles = await JSON.parse(roles);
 
-  if (aboutMe) admin.aboutMe = aboutMe.length ? aboutMe : "I prefer to remain unknown, just another face in the crowd. It’s not that I have secrets to hide, but I find comfort in my anonymity. My name doesn't matter, and I’m fine with that—it allows me to move through life quietly, without the weight of expectations. People often look for labels, for ways to define others, but I'd rather let my actions speak for themselves. You don’t need to know who I am to understand what I stand for.";
+  if (aboutMe)
+    admin.aboutMe = aboutMe.length
+      ? aboutMe
+      : "I prefer to remain unknown, just another face in the crowd. It’s not that I have secrets to hide, but I find comfort in my anonymity. My name doesn't matter, and I’m fine with that—it allows me to move through life quietly, without the weight of expectations. People often look for labels, for ways to define others, but I'd rather let my actions speak for themselves. You don’t need to know who I am to understand what I stand for.";
 
-  if (headline) admin.headline = headline.length ? headline : "Starting my coding journey can be both exciting and overwhelming, but I don't need to worry—every great developer began where I am now. The key is to take one step at a time, learning the fundamentals and building a strong foundation. Whether I'm writing my first 'Hello, World!' or exploring new languages, I know that persistence and curiosity will be my greatest allies. Each new line of code brings me closer to creating something amazing, and with dedication, I'll be surprised at how quickly I can grow.";
+  if (headline)
+    admin.headline = headline.length
+      ? headline
+      : "Starting my coding journey can be both exciting and overwhelming, but I don't need to worry—every great developer began where I am now. The key is to take one step at a time, learning the fundamentals and building a strong foundation. Whether I'm writing my first 'Hello, World!' or exploring new languages, I know that persistence and curiosity will be my greatest allies. Each new line of code brings me closer to creating something amazing, and with dedication, I'll be surprised at how quickly I can grow.";
 
   if (portfolio) admin.portfolio = portfolio;
   if (linkedin) admin.linkedin = linkedin;

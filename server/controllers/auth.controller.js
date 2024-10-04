@@ -58,7 +58,7 @@ const handleSignUp = AsyncHandler(async (req, res, _) => {
   if (!fullName || !email || !phoneNumber || !password || !confirmPassword) {
     return res.status(400).json({
       success: false,
-      message: "All credntials must be filled",
+      message: "All credentials must be filled",
     });
   }
 
@@ -76,7 +76,7 @@ const handleSignUp = AsyncHandler(async (req, res, _) => {
   if (admin) {
     return res.status(400).json({
       success: false,
-      message: "User already exist with this phone number or email",
+      message: "User already exist with this phone/email",
     });
   }
 
