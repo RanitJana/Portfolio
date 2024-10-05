@@ -30,7 +30,13 @@ function ProfileEdit() {
     avatar: user?.avatar,
     resume: user?.resume,
 
-    portfolio: window.location.href.split('/')[0] + "//" + window.location.href.split('/')[1] + window.location.href.split('/')[2] + '/' + id,
+    portfolio:
+      window.location.href.split("/")[0] +
+      "//" +
+      window.location.href.split("/")[1] +
+      window.location.href.split("/")[2] +
+      "/" +
+      id,
     linkedin: user?.linkedin,
     github: user?.github,
     instagram: user?.instagram,
@@ -52,14 +58,13 @@ function ProfileEdit() {
     e.preventDefault();
 
     for (let i = 0; i < info.roles.length; i++) {
-      if (info.roles[i] == '') {
+      if (info.roles[i] == "") {
         let allRole = roleRef.current?.querySelectorAll("input");
         let lastRole = allRole[allRole.length - 1];
         lastRole.focus();
         return toast.warning("Every role must be filled");
       }
     }
-
 
     setSubmit(true);
     setEdible(false);
@@ -108,7 +113,10 @@ function ProfileEdit() {
       <div className="imgResume">
         <div className="img">
           <span>Profile Image</span>
-          <img src={info.avatar || "/Images/developer_5813665.png"} alt="Avater" />
+          <img
+            src={info.avatar || "/Images/developer_5813665.png"}
+            alt="Avater"
+          />
           {edible ? (
             <>
               <label htmlFor="avatarFile">Upload Avatar</label>
@@ -119,7 +127,13 @@ function ProfileEdit() {
         </div>
         <div className="resume">
           <span>Resume</span>
-          <img src={info.resume || "/Images/resume-eg.png"} alt="Resume" onClick={() => window.open(info.resume || "/Images/resume-eg.png", '_blank')} />
+          <img
+            src={info.resume || "/Images/resume-eg.png"}
+            alt="Resume"
+            onClick={() =>
+              window.open(info.resume || "/Images/resume-eg.png", "_blank")
+            }
+          />
           {edible ? (
             <>
               <label htmlFor="resumeFile">Upload Resume</label>

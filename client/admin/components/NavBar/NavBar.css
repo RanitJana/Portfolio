@@ -41,10 +41,15 @@
     border-radius: 50%;
 }
 
-.navBar .activeNav img,
+/* .navBar .activeNav img, */
+.navBar a:not(.navBar .activeNav):hover img,
 .navBar .logout:hover img {
-    background-color: rgba(128, 128, 128, 0.362);
+    background-color: rgba(194, 194, 194, 0.362);
     cursor: pointer;
+}
+
+.navBar .activeNav img {
+    filter: invert(100%);
 }
 
 .navBar .logout {

@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./AdminRole.css";
 function AdminRole({ roles, edible, setInfo, toast, roleRef }) {
-
-
   function handleAddNewRole() {
     if (!edible) return;
 

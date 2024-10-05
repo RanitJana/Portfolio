@@ -39,25 +39,25 @@ function ManageSkill() {
     <div className="manageSkill">
       <div className="adminSkills">
         <h2>Skills</h2>
-        {
-          skills && skills.length > 0 ?
-            <ul className="childSkill">
-              {skills.map((value, index) => (
-                <EditSkill
-                  key={index}
-                  id={value._id}
-                  skill={value.name}
-                  efficiency={value.efficiency}
-                />
-              ))}
-            </ul> :
-            <p className="noTimeline">
-              <span>
-                No Skill is found
-              </span>
-              <button onClick={() => navigate(`/admin/${id}/skill/create`)} >Add Skill</button>
-            </p>
-        }
+        {skills && skills.length > 0 ? (
+          <ul className="childSkill">
+            {skills.map((value, index) => (
+              <EditSkill
+                key={index}
+                id={value._id}
+                skill={value.name}
+                efficiency={value.efficiency}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="noTimeline">
+            <span>No Skill is found</span>
+            <button onClick={() => navigate(`/admin/${id}/skill/create`)}>
+              Add Skill
+            </button>
+          </p>
+        )}
       </div>
     </div>
   );

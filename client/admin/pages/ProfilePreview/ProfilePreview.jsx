@@ -106,24 +106,24 @@ function ProfilePreview() {
       <AdminProjects project={data?.project} />
       <div className="adminSkills">
         <h2>Skills</h2>
-        {
-          data && data.skill.length > 0 ?
-            <ul className="childSkill">
-              {data?.skill?.map((value, index) => (
-                <AdminSkills
-                  key={index}
-                  skill={value.name}
-                  efficiency={value.efficiency}
-                />
-              ))}
-            </ul> :
-            <p className="noTimeline">
-              <span>
-                No Skill is found
-              </span>
-              <button onClick={() => navigate(`/admin/${id}/skill/create`)} >Add Skills</button>
-            </p>
-        }
+        {data && data.skill.length > 0 ? (
+          <ul className="childSkill">
+            {data?.skill?.map((value, index) => (
+              <AdminSkills
+                key={index}
+                skill={value.name}
+                efficiency={value.efficiency}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="noTimeline">
+            <span>No Skill is found</span>
+            <button onClick={() => navigate(`/admin/${id}/skill/create`)}>
+              Add Skills
+            </button>
+          </p>
+        )}
       </div>
       <AdminTimeline timeline={data?.timeline} />
     </div>

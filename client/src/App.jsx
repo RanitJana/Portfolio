@@ -71,10 +71,9 @@ export default function App() {
         isProjectLoading: false,
       }));
     }
-  }, [id, navigate])
+  }, [id, navigate]);
 
   useEffect(() => {
-
     if (isValidObjectId(id) || !id) {
       getAllApiData();
 
