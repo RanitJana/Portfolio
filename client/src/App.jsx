@@ -100,7 +100,7 @@ export default function App() {
 
   return (
     <>
-      <div className="background-fix"></div>
+      {/* <div className="background-fix"></div> */}
       <div className="App">
         <globalContext.Provider
           value={value}
