@@ -198,7 +198,26 @@ const handleUpdateProfile = async function (formData) {
         withCredentials: true,
       }
     );
-    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response?.data;
+  }
+};
+
+const handleAddTimeline = async function (data) {
+  try {
+    let response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/timeline`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
 
     return response.data;
   } catch (error) {
@@ -218,4 +237,5 @@ export {
   handleUpdateSkill,
   handleDeleteSkill,
   handleUpdateProfile,
+  handleAddTimeline,
 };

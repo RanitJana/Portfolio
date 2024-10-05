@@ -64,9 +64,8 @@
 .navBar .dragToOpen {
     height: fit-content;
     background-color: white;
-    padding: 1rem 0;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 0.5rem;
+    border-bottom-right-radius: 50%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -96,7 +95,7 @@
         display: block;
         position: absolute;
         right: 0;
-        top: 50%;
-        transform: translate(100%, -50%);
+        top: 0%;
+        transform: translate(100%, 0%);
     }
 }

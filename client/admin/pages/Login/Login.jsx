@@ -24,6 +24,7 @@ function Login() {
 
     if (emailOrPhone === "") {
       emailRef.current.style.borderColor = "red";
+      emailRef.current.focus();
       setTimeout(() => {
         emailRef.current.style.borderColor = "gray";
       }, 1500);
@@ -32,6 +33,7 @@ function Login() {
     }
     if (password === "") {
       passwordRef.current.style.borderColor = "red";
+      passwordRef.current.focus();
       setTimeout(() => {
         passwordRef.current.style.borderColor = "gray";
       }, 1500);

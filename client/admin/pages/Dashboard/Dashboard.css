@@ -14,3 +14,8 @@
     width: 100%;
     transition: all 0.3s ease;
 }
+@media screen and (max-width:561px) {
+    .dashBoard>.right{
+        padding: 1rem 0 0 0;
+    }   
+}
