@@ -6,6 +6,24 @@
     border-radius: 5px;
 }
 
+.manageSkill>.adminSkills>.top {
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manageSkill>.adminSkills>.top>button {
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: black;
+    height: 2rem;
+    padding: 0 2rem;
+    cursor: pointer;
+}
+
 .manageSkill>.adminSkills {
     display: flex;
     flex-direction: column;

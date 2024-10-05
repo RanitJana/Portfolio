@@ -9,7 +9,7 @@ import Admin from "../../admin/Admin.jsx";
 import Dashboard from "../../admin/pages/Dashboard/Dashboard.jsx";
 import ProfilePreview from "../../admin/pages/ProfilePreview/ProfilePreview.jsx";
 import ProjectCreate from "../../admin/pages/ProjectCreate/ProjectCreate.jsx";
-import SkillCreate from "../../admin/pages/SkillCreate/SkillCreate.jsx";
+// import SkillCreate from "../../admin/pages/SkillCreate/SkillCreate.jsx";
 import TimelineCreate from "../../admin/pages/TimelineCreate/TimelineCreate.jsx";
 import MessagePreview from "../../admin/pages/MessagePreview/MessagePreview.jsx";
 import ProfileEdit from "../../admin/pages/ProfileEdit/ProfileEdit.jsx";
@@ -38,7 +38,7 @@ const router = createBrowserRouter(
         <Route path=":id/" element={<Dashboard />}>
           <Route index path="" element={<ProfilePreview />} />
           <Route path="project/create" element={<ProjectCreate />} />
-          <Route path="skill/create" element={<SkillCreate />} />
+          {/* <Route path="skill/create" element={<SkillCreate />} /> */}
           <Route path="skill/manage" element={<ManageSkill />} />
           <Route path="timeline/create" element={<TimelineCreate />} />
           <Route path="message" element={<MessagePreview />} />

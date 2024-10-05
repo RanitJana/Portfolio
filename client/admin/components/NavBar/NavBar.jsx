@@ -73,7 +73,7 @@ function NavBar() {
           {/* projectCreate */}
         </NavLink>
         <NavLink
-          to={`/admin/${id}/skill/create`}
+          to={`/admin/${id}/skill/manage`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-design-100.png" alt="" />

@@ -6,6 +6,7 @@ import { toastContext } from "../../../src/Index.jsx";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
+import SkillCreate from "../../components/SkillCreate/SkillCreate.jsx";
 
 function ManageSkill() {
   const { id } = useParams();
@@ -15,6 +16,9 @@ function ManageSkill() {
   const [isLoading, setLoading] = useState(true);
 
   const [skills, setSkills] = useState(null);
+
+  const [openAddBox, setAddBox] = useState(false);
+  const [updateAfterAdd, setUpdateAfterAdd] = useState(false);
 
   useEffect(() => {
     async function getSkills() {
@@ -31,14 +35,25 @@ function ManageSkill() {
       }
     }
     getSkills();
-  }, [id]);
+  }, [id, updateAfterAdd]);
 
   if (isLoading) return <AdminSkeleton />;
 
   return (
     <div className="manageSkill">
+      {openAddBox ? (
+        <SkillCreate
+          setUpdateAfterAdd={setUpdateAfterAdd}
+          setAddBox={setAddBox}
+        />
+      ) : (
+        ""
+      )}
       <div className="adminSkills">
-        <h2>Skills</h2>
+        <div className="top">
+          <h2>Skills</h2>
+          <button onClick={() => setAddBox(true)}>Add</button>
+        </div>
         {skills && skills.length > 0 ? (
           <ul className="childSkill">
             {skills.map((value, index) => (

@@ -1,32 +1,36 @@
 .skillCreate {
-    background-color: white;
-    height: 100%;
-    min-height: fit-content;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.497);
+    height: 100dvh;
+    width: 100dvw;
+    min-height: 500px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 500;
+
 }
 
-.skillCreate>.container {
+.skillCreate>.scroller {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.skillCreate>.scroller>.container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 1rem;
     gap: 0.5rem;
+    background-color: white;
+    border-radius: 5px;
 }
 
-.skillCreate>.container h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.skillCreate>.container>.skillImagePreview {
+.skillCreate>.scroller>.container>.skillImagePreview {
     height: 70px;
     width: 100%;
     border: 1px solid #ccc;
@@ -35,7 +39,13 @@
     place-items: center;
 }
 
-.skillCreate>.container>button {
+.skillCreate .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skillCreate>.scroller>.container button {
+    position: relative;
     cursor: pointer;
     width: fit-content;
     background-color: black;
@@ -49,12 +59,12 @@
     align-self: flex-end;
 }
 
-.skillCreate>.container>* {
+.skillCreate>.scroller>.container>* {
     width: 100%;
     position: relative;
 }
 
-.skillCreate>.container input {
+.skillCreate>.scroller>.container input {
     width: 100%;
     padding: 0.5rem;
     border-radius: 5px;
@@ -62,7 +72,7 @@
     outline: none;
 }
 
-.skillCreate>.container>.title>.list {
+.skillCreate>.scroller>.container>.title>.list {
     z-index: 2;
     position: absolute;
     bottom: 0;
@@ -77,7 +87,7 @@
 }
 
 
-.skillCreate>.container>.title .list-item {
+.skillCreate>.scroller>.container>.title .list-item {
     padding: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -85,10 +95,10 @@
     cursor: pointer;
 }
 
-.skillCreate>.container>.title .list-item:last-child {
+.skillCreate>.scroller>.container>.title .list-item:last-child {
     border-color: transparent;
 }
 
-.skillCreate>.container>.title .list-item:hover {
+.skillCreate>.scroller>.container>.title .list-item:hover {
     background-color: #ccc;
 }
