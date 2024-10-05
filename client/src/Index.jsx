@@ -10,7 +10,12 @@ export { toastContext };
 function Index() {
   return (
     <toastContext.Provider value={{ toast }}>
-      <ToastContainer theme="dark" />
+      <ToastContainer
+        theme="dark"
+        autoClose={1000}
+        closeOnClick
+        transition:Zoom
+      />
       <Outlet />
     </toastContext.Provider>
   );

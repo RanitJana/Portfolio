@@ -4,11 +4,12 @@ import EditSkill from "../../components/EditSkill/EditSkill.jsx";
 import { handleSkills } from "../../../src/utils/Apis.js";
 import { toastContext } from "../../../src/Index.jsx";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 
 function ManageSkill() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { toast } = useContext(toastContext);
   const [isLoading, setLoading] = useState(true);
@@ -38,16 +39,25 @@ function ManageSkill() {
     <div className="manageSkill">
       <div className="adminSkills">
         <h2>Skills</h2>
-        <ul className="childSkill">
-          {skills?.map((value, index) => (
-            <EditSkill
-              key={index}
-              id={value._id}
-              skill={value.name}
-              efficiency={value.efficiency}
-            />
-          ))}
-        </ul>
+        {
+          skills && skills.length > 0 ?
+            <ul className="childSkill">
+              {skills.map((value, index) => (
+                <EditSkill
+                  key={index}
+                  id={value._id}
+                  skill={value.name}
+                  efficiency={value.efficiency}
+                />
+              ))}
+            </ul> :
+            <p className="noTimeline">
+              <span>
+                No Skill is found
+              </span>
+              <button onClick={() => navigate(`/admin/${id}/skill/create`)} >Add Skill</button>
+            </p>
+        }
       </div>
     </div>
   );

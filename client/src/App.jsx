@@ -13,7 +13,7 @@ import {
   handleTimeline,
   handleProject,
 } from "./utils/Apis.js";
-import { useEffect, createContext, useState, useRef } from "react";
+import { useEffect, createContext, useState, useRef, useCallback } from "react";
 
 const globalContext = createContext();
 export { globalContext };
@@ -50,29 +50,30 @@ export default function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getAllApiData = async () => {
-      try {
-        const [user, skills, timeline, project] = await Promise.all([
-          handleUser(id),
-          handleSkills(id),
-          handleTimeline(id),
-          handleProject(id),
-        ]);
+  const getAllApiData = useCallback(async () => {
+    try {
+      const [user, skills, timeline, project] = await Promise.all([
+        handleUser(id),
+        handleSkills(id),
+        handleTimeline(id),
+        handleProject(id),
+      ]);
 
-        setData(() => ({ user, skills, timeline, project }));
-      } catch (error) {
-        console.log(error);
-        navigate("/404");
-      } finally {
-        setLoading(() => ({
-          isUserLoading: false,
-          isSkillLoading: false,
-          isTimelineLoading: false,
-          isProjectLoading: false,
-        }));
-      }
-    };
+      setData(() => ({ user, skills, timeline, project }));
+    } catch (error) {
+      console.log(error);
+      navigate("/404");
+    } finally {
+      setLoading(() => ({
+        isUserLoading: false,
+        isSkillLoading: false,
+        isTimelineLoading: false,
+        isProjectLoading: false,
+      }));
+    }
+  }, [id, navigate])
+
+  useEffect(() => {
 
     if (isValidObjectId(id) || !id) {
       getAllApiData();
@@ -84,7 +85,7 @@ export default function App() {
 
       localStorage.setItem("id", JSON.stringify(ids));
     } else navigate("/404");
-  }, [id, navigate]);
+  }, [id, navigate, getAllApiData]);
 
   const value = {
     user: data.user,

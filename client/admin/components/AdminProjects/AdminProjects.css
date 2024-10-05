@@ -7,6 +7,14 @@
     padding: 2rem 1rem;
 }
 
+.noProject,
+.noTimeline {
+    margin: 1rem 0;
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+}
+
 .adminTimeline {
     grid-area: adminTimeline;
 }
@@ -47,7 +55,9 @@
 }
 
 .adminProjects>.table-wrapper>table>tbody>tr>td>button,
-.adminTimeline>.table-wrapper>table>tbody>tr>td>button {
+.adminTimeline>.table-wrapper>table>tbody>tr>td>button,
+.noProject>button,
+.noTimeline>button {
     cursor: pointer;
     width: fit-content;
     background-color: black;

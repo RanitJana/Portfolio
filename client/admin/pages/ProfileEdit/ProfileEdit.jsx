@@ -1,5 +1,5 @@
 import "./ProfileEdit.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UserContext } from "../../Admin.jsx";
 import { toastContext } from "../../../src/Index.jsx";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
@@ -11,6 +11,8 @@ function ProfileEdit() {
   const { user } = useContext(UserContext);
 
   const { toast } = useContext(toastContext);
+
+  let roleRef = useRef(null);
 
   const [edible, setEdible] = useState(false);
 
@@ -48,6 +50,16 @@ function ProfileEdit() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
+
+    for (let i = 0; i < info.roles.length; i++) {
+      if (info.roles[i] == '') {
+        let allRole = roleRef.current?.querySelectorAll("input");
+        let lastRole = allRole[allRole.length - 1];
+        lastRole.focus();
+        return toast.warning("Every role must be filled");
+      }
+    }
+
 
     setSubmit(true);
     setEdible(false);
@@ -199,6 +211,7 @@ function ProfileEdit() {
             edible={edible}
             setInfo={setInfo}
             toast={toast}
+            roleRef={roleRef}
           />
 
           <label htmlFor="headline">Headline</label>

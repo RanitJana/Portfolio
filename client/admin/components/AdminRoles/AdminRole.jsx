@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
 import "./AdminRole.css";
-function AdminRole({ roles, edible, setInfo, toast }) {
-  let roleRef = useRef(null);
+function AdminRole({ roles, edible, setInfo, toast, roleRef }) {
+
 
   function handleAddNewRole() {
     if (!edible) return;
