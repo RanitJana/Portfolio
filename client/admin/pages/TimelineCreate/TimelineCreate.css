@@ -4,4 +4,49 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 100%;
+    min-height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminTimelineAdd>.timelineParent {
+    height: 100%;
+    min-height: fit-content;
+    display: grid;
+    place-items: center;
+    padding: 1rem 0;
+}
+
+.adminTimelineAdd>.timelineParent>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminTimelineAdd>.timelineParent>form>h2 {
+    margin-bottom: 1rem;
+}
+
+.adminTimelineAdd>.timelineParent>form>button {
+    position: relative;
+    height: 2rem;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    min-width: 5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.adminTimelineAdd>.timelineParent>form>input:focus {
+    border-color: skyblue;
+}
+
+.adminTimelineAdd>.timelineParent>form>input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
 }
