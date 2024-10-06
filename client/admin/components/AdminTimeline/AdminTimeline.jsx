@@ -9,7 +9,9 @@ function AdminTimeline({ timeline = [] }) {
     <div className="adminTimeline">
       <div className="heading">
         <h2>Timeline</h2>
-        <button>Manage Timeline</button>
+        <button onClick={() => navigate(`/admin/${id}/timeline/manage`)}>
+          Manage Timeline
+        </button>
       </div>
       <div className="table-wrapper">
         {timeline && timeline.length > 0 ? (

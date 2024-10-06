@@ -8,7 +8,9 @@
 
 .manageSkill>.adminSkills>.top {
     display: flex;
-    margin: 2rem 0;
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
     justify-content: space-between;
     align-items: center;
 }

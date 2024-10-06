@@ -6,7 +6,9 @@
 }
 
 .profileEdit>h2 {
-    margin-bottom: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
 }
 
 .profileEdit>.imgResume {
@@ -29,6 +31,25 @@
 .profileEdit>.imgResume>* {
     text-align: left;
     display: grid;
+}
+
+.profileEdit>.imgResume>*>span {
+    font-weight: 500;
+    margin: 1rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.profileEdit>.imgResume>*>span::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 0.8rem;
+    background-color: green;
+    transform: translateY(-50%);
 }
 
 .profileEdit>.imgResume>*>img {
@@ -60,7 +81,6 @@
     }
 }
 
-
 .profileEdit>.info>form {
     display: flex;
     flex-direction: column;
@@ -69,6 +89,9 @@
 
 .profileEdit>.info>form>label {
     margin-bottom: -0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .profileEdit>.info>form>textarea:focus,

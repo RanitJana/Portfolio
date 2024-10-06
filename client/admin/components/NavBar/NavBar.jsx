@@ -80,7 +80,7 @@ function NavBar() {
           {/* SKillCreate */}
         </NavLink>
         <NavLink
-          to={`/admin/${id}/timeline/create`}
+          to={`/admin/${id}/timeline/manage`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-delivery-time-48.png" alt="" />

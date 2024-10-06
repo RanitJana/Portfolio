@@ -226,6 +226,32 @@ const handleAddTimeline = async function (data) {
   }
 };
 
+const handleUpdateTimeline = async function (title, description, from, to, id) {
+  try {
+    let response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/timeline`,
+      {
+        title,
+        description,
+        from,
+        to,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          _id: id,
+        },
+        withCredentials: true,
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -238,4 +264,5 @@ export {
   handleDeleteSkill,
   handleUpdateProfile,
   handleAddTimeline,
+  handleUpdateTimeline,
 };
