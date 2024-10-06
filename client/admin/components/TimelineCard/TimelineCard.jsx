@@ -15,6 +15,8 @@ function TimelineCard({ title, description, from, to, id, setDeleteTimeline }) {
 
   const [isSubmit, setSubmit] = useState(false);
 
+  const [openOptions, setOpenOptions] = useState(false);
+
   const { toast } = useContext(toastContext);
 
   const allRefs = useRef({
@@ -43,23 +45,32 @@ function TimelineCard({ title, description, from, to, id, setDeleteTimeline }) {
     };
   }, [allRefs.description, data.description, edible]);
 
-  const updateTimeline = useCallback(async () => {
+  function checkInputs() {
     if (data.title == "") {
       toast.warning("Fill all the fields");
-      return allRefs.current.title.focus();
+      allRefs.current.title.focus();
+      return false;
     }
     if (data.description == "") {
       toast.warning("Fill all the fields");
-      return allRefs.current.description.focus();
+      allRefs.current.description.focus();
+      return false;
     }
     if (data.from == "") {
       toast.warning("Fill all the fields");
-      return allRefs.current.from.focus();
+      allRefs.current.from.focus();
+      return false;
     }
     if (data.to == "") {
       toast.warning("Fill all the fields");
-      return allRefs.current.to.focus();
+      allRefs.current.to.focus();
+      return false;
     }
+    return true;
+  }
+
+  const updateTimeline = useCallback(async () => {
+    if (!checkInputs()) return;
 
     try {
       setSubmit(true);
@@ -158,35 +169,56 @@ function TimelineCard({ title, description, from, to, id, setDeleteTimeline }) {
             >
               {isSubmit ? <span className="loader"></span> : "Save"}
             </button>
-            {!isSubmit ? (
-              <button onClick={() => setEdible(false)}>Cancel</button>
-            ) : (
-              ""
-            )}
+
+            <button
+              type="button"
+              onClick={() => {
+                if (!isSubmit) setEdible(false);
+              }}
+              disabled={isSubmit}
+            >
+              Cancel
+            </button>
           </div>
         </>
       ) : (
         <div className="show">
-          <div className="title">{data.title}</div>
+          <div className="top">
+            <div className="title">{data.title}</div>
+            <div
+              className="options"
+              onClick={() => setOpenOptions((prev) => !prev)}
+            >
+              <img
+                src="/Images/icons8-more-24.png"
+                alt=""
+                style={{ transform: "rotate(90deg)" }}
+              />
+              {openOptions ? (
+                <div className="buttons">
+                  {!isSubmit ? (
+                    <button onClick={() => setEdible(true)}>Edit</button>
+                  ) : (
+                    ""
+                  )}
+                  <button
+                    onClick={() => {
+                      if (!isSubmit) deleteTimeline();
+                    }}
+                  >
+                    {isSubmit ? <span className="loader"></span> : "Delete"}
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
           <span className="duration">
             <span>{data.from}</span>-<span>{data.to}</span>
           </span>
 
           <div className="description">{data.description}</div>
-          <div className="buttons">
-            {!isSubmit ? (
-              <button onClick={() => setEdible(true)}>Edit</button>
-            ) : (
-              ""
-            )}
-            <button
-              onClick={() => {
-                if (!isSubmit) deleteTimeline();
-              }}
-            >
-              {isSubmit ? <span className="loader"></span> : "Delete"}
-            </button>
-          </div>
         </div>
       )}
     </div>

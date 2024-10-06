@@ -32,7 +32,17 @@
 
 .timelineCard .buttons {
     display: flex;
+    justify-content: flex-end;
     gap: 1rem;
+}
+
+.timelineCard .show .buttons {
+    position: absolute;
+    flex-direction: column;
+    gap: 0.25rem;
+    bottom: 0;
+    right: 0;
+    transform: translate(0%, 100%);
     justify-content: flex-end;
 }
 
@@ -52,6 +62,31 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.timelineCard .show .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timelineCard .show .top .options:hover {
+    cursor: pointer;
+}
+
+.timelineCard .show .top .options:active {
+    background-color: #ccc;
+}
+
+.timelineCard .show .top .options {
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .timelineCard .show .title {
