@@ -244,7 +244,6 @@ const handleUpdateTimeline = async function (title, description, from, to, id) {
         withCredentials: true,
       }
     );
-    console.log(response);
 
     return response.data;
   } catch (error) {

@@ -72,6 +72,7 @@ function TimelineCard({ title, description, from, to, id }) {
 
       if (success) toast.success(message);
       else toast.warning(message);
+      setEdible(false);
     } catch (error) {
       console.log(error);
       toast.error(error.message || "An error occurred");
