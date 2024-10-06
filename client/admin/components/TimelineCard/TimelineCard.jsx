@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import "./TimelineCard.css";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { handleUpdateTimeline } from "../../utils/Apis.js";
+import {
+  handleUpdateTimeline,
+  handleDeleteTimeline,
+} from "../../utils/Apis.js";
 import { toastContext } from "../../../src/Index.jsx";
 
-function TimelineCard({ title, description, from, to, id }) {
+function TimelineCard({ title, description, from, to, id, setDeleteTimeline }) {
   const [edible, setEdible] = useState(false);
 
   const [data, setData] = useState({ title, description, from, to, id });
@@ -80,6 +82,22 @@ function TimelineCard({ title, description, from, to, id }) {
       setSubmit(false);
     }
   }, [data.from, data.id, data.title, data.description, data.to]);
+
+  const deleteTimeline = useCallback(async () => {
+    try {
+      setSubmit(true);
+      let { success, message } = await handleDeleteTimeline(data.id);
+      if (success) {
+        toast.success(message);
+        setDeleteTimeline((prev) => !prev);
+      } else toast.warning(message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message || "An error occurred");
+    } finally {
+      setSubmit(true);
+    }
+  }, []);
 
   return (
     <div className="timelineCard">
@@ -156,8 +174,18 @@ function TimelineCard({ title, description, from, to, id }) {
 
           <div className="description">{data.description}</div>
           <div className="buttons">
-            <button onClick={() => setEdible(true)}>Edit</button>
-            <button>Delete</button>
+            {!isSubmit ? (
+              <button onClick={() => setEdible(true)}>Edit</button>
+            ) : (
+              ""
+            )}
+            <button
+              onClick={() => {
+                if (!isSubmit) deleteTimeline();
+              }}
+            >
+              {isSubmit ? <span className="loader"></span> : "Delete"}
+            </button>
           </div>
         </div>
       )}

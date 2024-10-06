@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import "./TimelineCreate.css";
@@ -6,7 +7,7 @@ import { toastContext } from "../../../src/Index.jsx";
 import { useParams } from "react-router-dom";
 import { handleAddTimeline } from "../../utils/Apis.js";
 
-function TimelineCreate() {
+function TimelineCreate({ setAddOpen, setNewTimeline }) {
   const { toast } = useContext(toastContext);
   const { id } = useParams();
 
@@ -76,6 +77,8 @@ function TimelineCreate() {
 
         if (success) toast.success(message);
         else toast.warning(message);
+        setAddOpen(false);
+        setNewTimeline((prev) => !prev);
       } catch (error) {
         console.log(error);
         toast.error(error.message || "An error occurred");
@@ -90,8 +93,6 @@ function TimelineCreate() {
     <div className="adminTimelineAdd">
       <div className="timelineParent">
         <form onSubmit={addTimeline}>
-          <h2>Add a new timeline</h2>
-
           <label htmlFor="title">Title</label>
           <input
             ref={(el) => (allRefs.current.title = el)}
@@ -143,15 +144,25 @@ function TimelineCreate() {
             }
             placeholder="Add description"
           />
-
-          {isLoading ? (
-            <button type="button" onClick={(e) => e.preventDefault()}>
-              {" "}
-              <span className="loader"></span>{" "}
+          <div className="buttons">
+            {isLoading ? (
+              <button type="button" onClick={(e) => e.preventDefault()}>
+                {" "}
+                <span className="loader"></span>{" "}
+              </button>
+            ) : (
+              <button type="submit">Add</button>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                if (!isLoading) setAddOpen(false);
+              }}
+              disabled={isLoading}
+            >
+              Cancel
             </button>
-          ) : (
-            <button type="submit">Add</button>
-          )}
+          </div>
         </form>
       </div>
     </div>

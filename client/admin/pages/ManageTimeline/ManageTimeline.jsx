@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { toastContext } from "../../../src/Index.jsx";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
+import TimelineCreate from "../../components/TimelineCreate/TimelineCreate.jsx";
 
 function ManageTimeline() {
   const { id } = useParams();
@@ -14,14 +15,16 @@ function ManageTimeline() {
   const { toast } = useContext(toastContext);
 
   const [isLoading, setLoading] = useState(false);
+  const [isAddOpen, setAddOpen] = useState(false);
+  const [newTimeline, setNewTimeline] = useState(false);
 
   const [data, setData] = useState(null);
+  const [deleteTimeline, setDeleteTimeline] = useState(false);
 
   const getAllTimeline = useCallback(async () => {
     try {
       setLoading(true);
       let data = await handleTimeline(id);
-      console.log(data);
 
       setData(data);
     } catch (error) {
@@ -33,15 +36,23 @@ function ManageTimeline() {
   }, [id]);
   useEffect(() => {
     getAllTimeline();
-  }, [getAllTimeline, id]);
+  }, [getAllTimeline, id, deleteTimeline, newTimeline]);
 
   if (isLoading) return <AdminSkeleton />;
 
   return (
     <div className="manageTimeline">
+      {isAddOpen ? (
+        <TimelineCreate
+          setAddOpen={setAddOpen}
+          setNewTimeline={setNewTimeline}
+        />
+      ) : (
+        ""
+      )}
       <div className="top">
         <h2>Timeline</h2>
-        <button>Add</button>
+        <button onClick={() => setAddOpen(true)}>Add</button>
       </div>
       <div className="bottom">
         {data && data.length > 0
@@ -54,6 +65,7 @@ function ManageTimeline() {
                   from={val.from}
                   to={val.to}
                   id={val._id}
+                  setDeleteTimeline={setDeleteTimeline}
                 />
               );
             })

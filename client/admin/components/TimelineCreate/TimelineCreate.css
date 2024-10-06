@@ -1,33 +1,47 @@
 .adminTimelineAdd {
-    background-color: white;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.364);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    width: 100dvw;
     height: 100%;
-    min-height: fit-content;
+    overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .adminTimelineAdd>.timelineParent {
-    height: 100%;
     min-height: fit-content;
-    display: grid;
-    place-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem 0;
 }
 
 .adminTimelineAdd>.timelineParent>form {
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    width: 300px;
+    height: fit-content;
+    border-radius: 5px;
 }
 
-.adminTimelineAdd>.timelineParent>form>h2 {
-    margin-bottom: 1rem;
+.adminTimelineAdd>.timelineParent>form .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
 }
 
-.adminTimelineAdd>.timelineParent>form>button {
+.adminTimelineAdd>.timelineParent>form button {
     position: relative;
     height: 2rem;
     background-color: black;

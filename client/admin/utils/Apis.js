@@ -251,6 +251,25 @@ const handleUpdateTimeline = async function (title, description, from, to, id) {
   }
 };
 
+const handleDeleteTimeline = async function (id) {
+  try {
+    let response = await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/timeline`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          _id: id,
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -264,4 +283,5 @@ export {
   handleUpdateProfile,
   handleAddTimeline,
   handleUpdateTimeline,
+  handleDeleteTimeline,
 };
