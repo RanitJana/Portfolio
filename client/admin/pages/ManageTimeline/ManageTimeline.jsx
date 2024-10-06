@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import "./ManageTimeline.css";
 import TimelineCard from "../../components/TimelineCard/TimelineCard";
 import { handleTimeline } from "../../../src/utils/Apis.js";
