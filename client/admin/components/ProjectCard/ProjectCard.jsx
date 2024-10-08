@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectCard.css";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
@@ -13,6 +13,7 @@ function ProjectCard({
   description = "",
 }) {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [isOpenOption, setOpenOption] = useState(false);
 
@@ -29,7 +30,7 @@ function ProjectCard({
 
   return (
     <div className="projectCard">
-      <div className="img">
+      <div className="img" onClick={() => navigate(`/admin/${id}/project/manage/${_id}/show`)} title="View project" >
         <img src={thumbnail} alt="" />
       </div>
       <div className="content">

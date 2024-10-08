@@ -8,7 +8,8 @@ import Base from "../pageSection/Base/Base.jsx";
 import Admin from "../../admin/Admin.jsx";
 import Dashboard from "../../admin/pages/Dashboard/Dashboard.jsx";
 import ProfilePreview from "../../admin/pages/ProfilePreview/ProfilePreview.jsx";
-import ProjectCreate from "../../admin/pages/ProjectCreate/ProjectCreate.jsx";
+import ProjectPreview from "../../admin/pages/ProjectPreview/ProjectPreview.jsx";
+import ProjectShow from "../../admin/pages/ProjectShow/ProjectShow.jsx";
 import ManageTimeline from "../../admin/pages/ManageTimeline/ManageTimeline.jsx";
 import MessagePreview from "../../admin/pages/MessagePreview/MessagePreview.jsx";
 import ProfileEdit from "../../admin/pages/ProfileEdit/ProfileEdit.jsx";
@@ -36,7 +37,12 @@ const router = createBrowserRouter(
       <Route path="/admin" element={<Admin />}>
         <Route path=":id/" element={<Dashboard />}>
           <Route index path="" element={<ProfilePreview />} />
-          <Route path="project/create" element={<ProjectCreate />} />
+          <Route path="project/manage/" >
+            <Route path="" element={<ProjectPreview />} />
+            {/* <Route path="add" element={<ProjectPreview />} /> */}
+            <Route path=":projectId/show" element={<ProjectShow />} />
+            {/* <Route path=":projectId/edit" element={<ProjectPreview />} /> */}
+          </Route>
           <Route path="skill/manage" element={<ManageSkill />} />
           <Route path="timeline/manage" element={<ManageTimeline />} />
           <Route path="message" element={<MessagePreview />} />

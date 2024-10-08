@@ -108,7 +108,7 @@ const handleGetProject = AsyncHandler(async (req, res, _) => {
 
   let projects = await projectSchema
     .find({ owner })
-    .select("name thumbnail description tech github link");
+    .select("name thumbnail description");
   return res.status(200).json({
     success: true,
     message: "Projects fetched successfully",

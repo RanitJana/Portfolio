@@ -66,7 +66,7 @@ function NavBar() {
           {/* profilePreview */}
         </NavLink>
         <NavLink
-          to={`/admin/${id}/project/create`}
+          to={`/admin/${id}/project/manage`}
           className={({ isActive }) => (isActive ? "activeNav" : "")}
         >
           <img src="/Images/icons8-add-folder-50.png" alt="" />

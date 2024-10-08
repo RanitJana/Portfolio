@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "./ProjectCreate.css";
+import "./ProjectPreview.css";
 import { handleProject } from "../../../src/utils/Apis.js";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
@@ -7,7 +7,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toastContext } from "../../../src/Index.jsx";
 
-function ProjectCreate() {
+function ProjectPreview() {
   const { id } = useParams();
   const { toast } = useContext(toastContext);
 
@@ -33,7 +33,7 @@ function ProjectCreate() {
   if (idLoading || !projectData) return <AdminSkeleton />;
 
   return (
-    <div className="projectCreate">
+    <div className="projectPreview">
       <div className="top">
         <h2>Projects</h2>
         <button>Add</button>
@@ -55,4 +55,4 @@ function ProjectCreate() {
   );
 }
 
-export default ProjectCreate;
+export default ProjectPreview;
