@@ -94,7 +94,9 @@ function ProfilePreview() {
       <div className="projectCount">
         <span>Project Completed</span>
         <span>{data?.project?.length || 0}</span>
-        <button>Manage Projects</button>
+        <button onClick={() => navigate(`/admin/${id}/project/manage`)}>
+          Manage Projects
+        </button>
       </div>
       <div className="skillCount">
         <span>Skills</span>

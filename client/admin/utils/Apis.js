@@ -270,6 +270,25 @@ const handleDeleteTimeline = async function (id) {
   }
 };
 
+const handlePostProject = async function (data) {
+  try {
+    let response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/project`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response?.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -284,4 +303,5 @@ export {
   handleAddTimeline,
   handleUpdateTimeline,
   handleDeleteTimeline,
+  handlePostProject,
 };

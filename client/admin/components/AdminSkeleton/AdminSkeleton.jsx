@@ -10,6 +10,7 @@ function AdminSkeleton() {
       <div className="skeletonAbout"></div>
       <div className="skeletonAbout"></div>
       <div className="skeletonAbout"></div>
+      <div className="skeletonAbout"></div>
     </div>
   );
 }

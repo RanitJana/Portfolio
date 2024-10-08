@@ -1,0 +1,9 @@
+.projectAdd {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    display: flex;
+    height: 100%;
+    min-height: fit-content;
+}

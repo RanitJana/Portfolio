@@ -4,12 +4,13 @@ import { handleProject } from "../../../src/utils/Apis.js";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 import ProjectCard from "../../components/ProjectCard/ProjectCard.jsx";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toastContext } from "../../../src/Index.jsx";
 
 function ProjectPreview() {
   const { id } = useParams();
   const { toast } = useContext(toastContext);
+  const navigate = useNavigate();
 
   const [idLoading, setLoading] = useState(true);
   const [projectData, setProjectData] = useState(null);
@@ -36,7 +37,9 @@ function ProjectPreview() {
     <div className="projectPreview">
       <div className="top">
         <h2>Projects</h2>
-        <button>Add</button>
+        <button onClick={() => navigate(`/admin/${id}/project/manage/add`)}>
+          Add
+        </button>
       </div>
       <div className="bottom">
         {projectData && projectData.length > 0

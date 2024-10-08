@@ -76,12 +76,12 @@ const handleUpdateProfile = AsyncHandler(async (req, res, _) => {
       ? headline
       : "Starting my coding journey can be both exciting and overwhelming, but I don't need to worry—every great developer began where I am now. The key is to take one step at a time, learning the fundamentals and building a strong foundation. Whether I'm writing my first 'Hello, World!' or exploring new languages, I know that persistence and curiosity will be my greatest allies. Each new line of code brings me closer to creating something amazing, and with dedication, I'll be surprised at how quickly I can grow.";
 
-  if (portfolio) admin.portfolio = portfolio;
-  if (linkedin) admin.linkedin = linkedin;
-  if (github) admin.github = github;
-  if (instagram) admin.instagram = instagram;
-  if (twitter) admin.twitter = twitter;
-  if (facebook) admin.facebook = facebook;
+  if (portfolio != undefined && portfolio != null) admin.portfolio = portfolio;
+  if (linkedin != undefined && linkedin != null) admin.linkedin = linkedin;
+  if (github != undefined && github != null) admin.github = github;
+  if (instagram != undefined && instagram != null) admin.instagram = instagram;
+  if (twitter != undefined && twitter != null) admin.twitter = twitter;
+  if (facebook != undefined && facebook != null) admin.facebook = facebook;
 
   admin.save({ validateBeforeSave: false }); //for password only we have to pass the object
 
