@@ -1,0 +1,116 @@
+.projectCard {
+    width: 100%;
+    padding: 1rem;
+    height: 15rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 30% 1fr;
+}
+
+@media screen and (max-width:1001px) {
+    .projectCard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:623px) {
+    .projectCard {
+        height: fit-content;
+        grid-template-columns: 1fr;
+    }
+}
+
+.projectCard>.img {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    height: 13rem;
+}
+
+.projectCard>.img>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projectCard>.content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.projectCard>.content>.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.projectCard>.content>.title>.name {
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
+
+.projectCard>.content>.title>.options {
+    transition: all 0.3s ease;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 35px;
+    height: 35px;
+    position: relative;
+}
+
+.projectCard>.content>.title>.options>.more {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 0.2rem;
+    transform: translate(0, 100%);
+}
+
+.projectCard>.content>.title>.options>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 0.3rem;
+    transform: rotate(90deg);
+}
+
+.projectCard>.content>.title>.options:hover {
+    cursor: pointer;
+}
+
+.projectCard>.content>.title>.options:active {
+    background-color: #ccccccbb;
+}
+
+.projectCard>.content>.description h1,
+.projectCard>.content>.description h2,
+.projectCard>.content>.description h3,
+.projectCard>.content>.description h4,
+.projectCard>.content>.description h5,
+.projectCard>.content>.description h6 {
+    font-size: 1rem;
+    color: black;
+    text-decoration: underline;
+}
+
+.projectCard>.content>.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+    word-break: break-all;
+}
