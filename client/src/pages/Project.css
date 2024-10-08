@@ -116,8 +116,8 @@
     padding-left: 0;
 }
 
-.singleProject>.preview ul {
-    padding-left: 2rem;
+.singleProject>.preview li {
+    margin-left: 2rem;
 }
 
 .singleProject>.preview pre {

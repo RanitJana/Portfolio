@@ -2,11 +2,10 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectCard.css";
-import { marked } from "marked";
-import DOMPurify from "dompurify";
+import getMarkdownText from "../../utils/ReadmeConverter.js";
 import { useState } from "react";
 
-function ProjectCard({
+export default function ProjectCard({
   name = "",
   thumbnail = "",
   _id = "",
@@ -17,20 +16,15 @@ function ProjectCard({
 
   const [isOpenOption, setOpenOption] = useState(false);
 
-  const getMarkdownText = () => {
-    if (!description) return { __html: "" }; // Safety check
-
-    const rawMarkup = marked(description); // Parse markdown to HTML
-    const sanitizedMarkup = DOMPurify.sanitize(rawMarkup); // Sanitize the HTML
-
-    return { __html: sanitizedMarkup }; // Return sanitized HTML
-  };
-
   const [isDeleting, setDeleting] = useState(false);
 
   return (
     <div className="projectCard">
-      <div className="img" onClick={() => navigate(`/admin/${id}/project/manage/${_id}/show`)} title="View project" >
+      <div
+        className="img"
+        onClick={() => navigate(`/admin/${id}/project/manage/${_id}/show`)}
+        title="View project"
+      >
         <img src={thumbnail} alt="" />
       </div>
       <div className="content">
@@ -58,11 +52,9 @@ function ProjectCard({
         </div>
         <div
           className="description"
-          dangerouslySetInnerHTML={getMarkdownText()}
+          dangerouslySetInnerHTML={getMarkdownText(description)}
         />
       </div>
     </div>
   );
 }
-
-export default ProjectCard;

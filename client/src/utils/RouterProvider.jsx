@@ -37,7 +37,7 @@ const router = createBrowserRouter(
       <Route path="/admin" element={<Admin />}>
         <Route path=":id/" element={<Dashboard />}>
           <Route index path="" element={<ProfilePreview />} />
-          <Route path="project/manage/" >
+          <Route path="project/manage/">
             <Route path="" element={<ProjectPreview />} />
             {/* <Route path="add" element={<ProjectPreview />} /> */}
             <Route path=":projectId/show" element={<ProjectShow />} />

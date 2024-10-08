@@ -1,0 +1,136 @@
+.projectShow {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: fit-content;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.projectShow>.top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.projectShow>.top>.name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.projectShow button {
+    background-color: black;
+    height: 2rem;
+    width: 5rem;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.projectShow button:hover {
+    cursor: pointer;
+}
+
+.projectShow>.bottom {
+    width: 100%;
+}
+
+.projectShow>.bottom>.thumbnail {
+    display: grid;
+    place-items: center;
+    height: max(fit-content, 20rem);
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.projectShow>.bottom>.thumbnail>img {
+    width: min(100%, 60rem);
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.projectShow>.bottom h1,
+.projectShow>.bottom h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.projectShow>.bottom h3,
+.projectShow>.bottom h4,
+.projectShow>.bottom h5,
+.projectShow>.bottom h6 {
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.projectShow>.bottom li {
+    margin-left: 2rem;
+}
+
+.projectShow>.bottom pre {
+    color: white;
+    background-color: rgb(34, 34, 34);
+    max-width: 800px;
+    overflow: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.projectShow>.bottom code {
+    background-color: rgba(135, 135, 135, 0.293);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin: 0 0.2rem;
+}
+
+.projectShow>.bottom pre code {
+    word-break: break-all;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+.projectShow>.bottom a {
+    color: rgb(106, 106, 255);
+    text-decoration: none;
+}
+
+.projectShow>.bottom>.deployments {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.projectShow>.bottom>.deployments a {
+    display: flex;
+    gap: 0.5rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    border-radius: 5px;
+    padding:0.5rem 1rem;
+    color: white;
+}
+.projectShow>.bottom>.deployments a img{
+    width: 20px;
+}
