@@ -23,7 +23,7 @@ function ProjectAdd() {
   const [selectedImage, setSelectedImage] = useState("");
 
   const allRefs = useRef({
-    previewThumbnail: null,
+    previewDescription: null,
     thumbnail: null,
     name: null,
     description: null,
@@ -81,13 +81,14 @@ function ProjectAdd() {
 
         const { success, message } = await handlePostProject(formData);
 
-        if (!success) toast.warning(message);
-        else toast.success(message);
+        if (!success) {
+          handleClear();
+          toast.warning(message);
+        } else toast.success(message);
       } catch (error) {
         toast.error(error.message || "Please try again");
       } finally {
         setSubmit(false);
-        handleClear();
       }
     },
     [info]
@@ -148,13 +149,13 @@ function ProjectAdd() {
 
   return (
     <div className="projectAdd">
-      <div className="top"></div>
+      <div className="top">
+        <button onClick={() => window.history.back()}>Back</button>
+        <h2>Add new project</h2>
+      </div>
       <div className="bottom">
         <form onSubmit={addProject}>
-          <div
-            className="previewThumbnail"
-            ref={(el) => (allRefs.current.previewThumbnail = el)}
-          >
+          <div className="previewThumbnail">
             <img src={selectedImage} alt="" />
           </div>
 
@@ -188,20 +189,35 @@ function ProjectAdd() {
             }
           />
 
-          {/* <div className="markdown-preview">
+          {/* previewDescription */}
+          <div className="markdown-preview">
             <p>Description Preview</p>
-            <div dangerouslySetInnerHTML={getMarkdownText(info.description)} />
-          </div> */}
+            <div
+              dangerouslySetInnerHTML={getMarkdownText(
+                info.description || "##### Changes will be reflected here"
+              )}
+              ref={(el) => (allRefs.current.previewDescription = el)}
+            />
+          </div>
+
           {/* description */}
-          <label htmlFor="description">Project description</label>
+          <label htmlFor="description">
+            <span>Project description</span>
+            <span style={{ color: "gray", fontSize: "0.8rem" }}> (Readme)</span>
+          </label>
           <textarea
             ref={(el) => (allRefs.current.description = el)}
             name=""
             id="description"
             value={info.description}
-            onChange={(e) =>
-              setInfo((prev) => ({ ...prev, description: e.target.value }))
-            }
+            onChange={(e) => {
+              let preview = allRefs.current.previewDescription;
+              setInfo((prev) => ({ ...prev, description: e.target.value }));
+
+              setTimeout(() => {
+                preview.scrollTop = preview.scrollHeight; // Scroll to the latest content
+              }, 0);
+            }}
           ></textarea>
 
           {/* tech */}
@@ -288,7 +304,12 @@ function ProjectAdd() {
           />
 
           <div className="buttons">
-            <button type="reset" onClick={handleClear}>
+            <button
+              type="reset"
+              onClick={() => {
+                if (!isSubmit) handleClear();
+              }}
+            >
               Clear
             </button>
             <button

@@ -4,8 +4,18 @@
     border: 1px solid #ccc;
     padding: 1rem;
     display: flex;
+    flex-direction: column;
     height: 100%;
     min-height: fit-content;
+}
+
+.projectAdd>.top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
 }
 
 .projectAdd>.bottom {
@@ -99,6 +109,11 @@
     align-items: center;
 }
 
+.projectAdd .tech .skillField .cancel:hover {
+    cursor: pointer;
+    border-color: skyblue;
+}
+
 .projectAdd .tech .skillField .cancel img {
     height: 100%;
     width: 100%;
@@ -159,6 +174,7 @@
 }
 
 .markdown-preview>div {
+    transition: all 0.3s ease;
     border: 1px solid #ccc;
     max-height: 20rem;
     min-height: 2rem;
@@ -246,9 +262,6 @@
     width: 20px;
 }
 
-
-
-
 .list {
     z-index: 2;
     position: absolute;
@@ -262,7 +275,6 @@
     overflow-y: auto;
     width: 100%;
 }
-
 
 .list-item {
     padding: 0.5rem;
