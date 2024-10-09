@@ -9,7 +9,12 @@ function Mouse() {
     const mouse = mouseRef.current;
 
     const updateMousePosition = (e) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
+      if (e.type === "mousemove") {
+        mousePos.current = { x: e.clientX, y: e.clientY };
+      } else if (e.type === "touchmove") {
+        const touch = e.touches[0];
+        mousePos.current = { x: touch.clientX, y: touch.clientY };
+      }
     };
 
     const animateCursor = () => {
@@ -22,28 +27,30 @@ function Mouse() {
       requestAnimationFrame(animateCursor);
     };
 
+    const hideCursor = () => {
+      mouse.style.opacity = 0;
+    };
+
+    const showCursor = () => {
+      mouse.style.opacity = 1;
+    };
+
     document.addEventListener("mousemove", updateMousePosition);
     document.addEventListener("touchmove", updateMousePosition);
-    document.addEventListener("mouseleave", () => {
-      mouse.style.opacity = 0;
-    });
-    document.addEventListener("mouseenter", () => {
-      mouse.style.opacity = 1;
-    });
+    document.addEventListener("mouseleave", hideCursor);
+    document.addEventListener("mouseenter", showCursor);
+    document.addEventListener("touchstart", showCursor);
+    document.addEventListener("touchend", hideCursor);
 
     requestAnimationFrame(animateCursor);
 
     return () => {
       document.removeEventListener("mousemove", updateMousePosition);
-      document.addEventListener("touchmove", updateMousePosition);
-      document.removeEventListener(
-        "mouseleave",
-        () => (mouse.style.opacity = 0)
-      );
-      document.removeEventListener(
-        "mouseenter",
-        () => (mouse.style.opacity = 1)
-      );
+      document.removeEventListener("touchmove", updateMousePosition);
+      document.removeEventListener("mouseleave", hideCursor);
+      document.removeEventListener("mouseenter", showCursor);
+      document.removeEventListener("touchstart", showCursor);
+      document.removeEventListener("touchend", hideCursor);
     };
   }, []);
 
