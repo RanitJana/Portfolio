@@ -81,10 +81,10 @@ function ProjectAdd() {
 
         const { success, message } = await handlePostProject(formData);
 
-        if (!success) {
+        if (success) {
           handleClear();
-          toast.warning(message);
-        } else toast.success(message);
+          toast.success(message);
+        } else toast.warning(message);
       } catch (error) {
         toast.error(error.message || "Please try again");
       } finally {

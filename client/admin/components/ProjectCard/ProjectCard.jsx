@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectCard.css";
 import getMarkdownText from "../../utils/ReadmeConverter.js";
