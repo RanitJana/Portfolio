@@ -23,6 +23,7 @@ function Mouse() {
     };
 
     document.addEventListener("mousemove", updateMousePosition);
+    document.addEventListener("touchmove", updateMousePosition);
     document.addEventListener("mouseleave", () => {
       mouse.style.opacity = 0;
     });
@@ -34,6 +35,7 @@ function Mouse() {
 
     return () => {
       document.removeEventListener("mousemove", updateMousePosition);
+      document.addEventListener("touchmove", updateMousePosition);
       document.removeEventListener(
         "mouseleave",
         () => (mouse.style.opacity = 0)

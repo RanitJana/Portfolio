@@ -8,7 +8,7 @@ import { handleUpdateProfile } from "../../utils/Apis.js";
 import { useParams } from "react-router-dom";
 
 function ProfileEdit() {
-  const { user } = useContext(UserContext);
+  const { user, setRenderUpdate } = useContext(UserContext);
 
   const { toast } = useContext(toastContext);
 
@@ -57,52 +57,62 @@ function ProfileEdit() {
   async function handleFormSubmit(e) {
     e.preventDefault();
 
-    for (let i = 0; i < info.roles.length; i++) {
-      if (info.roles[i] == "") {
-        let allRole = roleRef.current?.querySelectorAll("input");
-        let lastRole = allRole[allRole.length - 1];
-        lastRole.focus();
-        return toast.warning("Every role must be filled");
+    try {
+      for (let i = 0; i < info.roles.length; i++) {
+        if (info.roles[i] == "") {
+          let allRole = roleRef.current?.querySelectorAll("input");
+          let lastRole = allRole[allRole.length - 1];
+          lastRole.focus();
+          return toast.warning("Every role must be filled");
+        }
       }
+
+      setSubmit(true);
+      setEdible(false);
+
+      const formData = new FormData();
+
+      // Append the non-file fields
+      formData.append("fullName", info.name);
+      formData.append("email", info.email);
+      formData.append("phoneNumber", info.phone);
+      formData.append("roles", JSON.stringify(info.roles));
+      formData.append("headline", info.headline);
+      formData.append("aboutMe", info.about);
+      formData.append("linkedin", info.linkedin);
+      formData.append("github", info.github);
+      formData.append("instagram", info.instagram);
+      formData.append("twitter", info.twitter);
+      formData.append("facebook", info.facebook);
+      formData.append("youtube", info.youtube);
+
+      // Append the files if present
+      const avatarFile = document.getElementById("avatarFile").files[0];
+      const resumeFile = document.getElementById("resumeFile").files[0];
+
+      if (avatarFile) {
+        formData.append("avatar", avatarFile);
+      }
+
+      if (resumeFile) {
+        formData.append("resume", resumeFile);
+      }
+
+      let { success, message } = await handleUpdateProfile(formData);
+
+
+      if (success) {
+        setRenderUpdate(prev => !prev);
+        toast.success(message);
+      }
+      else toast.warning(message);
+
+    } catch (error) {
+      toast.error(error?.message || "An error occurred")
     }
-
-    setSubmit(true);
-    setEdible(false);
-
-    const formData = new FormData();
-
-    // Append the non-file fields
-    formData.append("fullName", info.name);
-    formData.append("email", info.email);
-    formData.append("phoneNumber", info.phone);
-    formData.append("roles", JSON.stringify(info.roles));
-    formData.append("headline", info.headline);
-    formData.append("aboutMe", info.about);
-    formData.append("linkedin", info.linkedin);
-    formData.append("github", info.github);
-    formData.append("instagram", info.instagram);
-    formData.append("twitter", info.twitter);
-    formData.append("facebook", info.facebook);
-    formData.append("youtube", info.youtube);
-
-    // Append the files if present
-    const avatarFile = document.getElementById("avatarFile").files[0];
-    const resumeFile = document.getElementById("resumeFile").files[0];
-
-    if (avatarFile) {
-      formData.append("avatar", avatarFile);
+    finally {
+      setSubmit(false);
     }
-
-    if (resumeFile) {
-      formData.append("resume", resumeFile);
-    }
-
-    let { success, message } = await handleUpdateProfile(formData);
-
-    setSubmit(false);
-
-    if (success) toast.success(message);
-    else toast.error(message);
   }
 
   if (!user) return <AdminSkeleton />;

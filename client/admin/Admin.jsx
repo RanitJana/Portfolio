@@ -18,6 +18,8 @@ function Admin() {
 
   const navigate = useNavigate();
 
+  const [renderUpdate, setRenderUpdate] = useState(false);
+
   useEffect(() => {
     async function checkVerify() {
       try {
@@ -36,14 +38,14 @@ function Admin() {
       }
     }
     checkVerify();
-  }, []);
+  }, [renderUpdate]);
 
   return (
     <div className="admin">
       {isLoading ? (
         <VerifyLoading />
       ) : (
-        <UserContext.Provider value={{ user, id }}>
+        <UserContext.Provider value={{ user, id, setRenderUpdate }}>
           <Outlet />
         </UserContext.Provider>
       )}
