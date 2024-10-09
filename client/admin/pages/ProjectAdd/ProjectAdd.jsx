@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./ProjectAdd.css";
 import getMarkdownText from "../../utils/ReadmeConverter.js";

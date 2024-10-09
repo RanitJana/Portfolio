@@ -112,7 +112,7 @@ const handleGetProject = AsyncHandler(async (req, res, _) => {
 
   let projects = await projectSchema
     .find({ owner })
-    .select("name thumbnail description");
+    .select("name thumbnail description link");
   return res.status(200).json({
     success: true,
     message: "Projects fetched successfully",
