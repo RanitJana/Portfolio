@@ -7,3 +7,275 @@
     height: 100%;
     min-height: fit-content;
 }
+
+.projectAdd>.bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.projectAdd>.bottom>form {
+    display: flex;
+    flex-direction: column;
+    min-height: fit-content;
+    width: min(40rem, 100%);
+    gap: 1rem;
+}
+
+.projectAdd>.bottom>form label {
+    margin-bottom: -1rem;
+}
+
+.projectAdd>.bottom>form input,
+.projectAdd>.bottom>form textarea {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: none;
+}
+
+.projectAdd>.bottom>form textarea {
+    height: auto;
+}
+
+.projectAdd>.bottom>form input[type="file"] {
+    display: none;
+}
+
+
+.projectAdd>.bottom>form input:focus,
+.projectAdd>.bottom>form textarea:focus {
+    border-color: skyblue;
+}
+
+.projectAdd button,
+#thumbnailLabel {
+    background-color: black;
+    color: white;
+    height: 2rem;
+    width: 5rem;
+    position: relative;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.projectAdd .previewThumbnail img[src=""] {
+    display: none;
+}
+
+.projectAdd .previewThumbnail {
+    background: url("/Images//picture.png") no-repeat center;
+    background-size: 5rem;
+}
+
+.projectAdd .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.projectAdd .tech .skillField {
+    position: relative;
+}
+
+.projectAdd .tech .skillField input {
+    width: 13rem;
+    padding-right: 2.5rem;
+    height: 100%;
+}
+
+.projectAdd .tech .skillField .cancel {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    width: 2.5rem;
+    border-left: 1px solid #ccc;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projectAdd .tech .skillField .cancel img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transform: rotate(45deg);
+}
+
+.projectAdd .tech>.addTech {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 2.2rem;
+    aspect-ratio: 1;
+}
+
+.projectAdd .tech>.addTech:hover {
+    border-color: skyblue;
+    cursor: pointer;
+}
+
+.projectAdd button:hover,
+#thumbnailLabel:hover {
+    cursor: pointer;
+}
+
+#thumbnailLabel {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: rgb(101, 101, 255);
+    margin-bottom: 0.5rem;
+}
+
+.previewThumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    border: 1px solid #ccc;
+}
+
+.previewThumbnail img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.projectAdd .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.projectAdd .buttons>button {
+    width: 100%;
+}
+
+.markdown-preview>div {
+    border: 1px solid #ccc;
+    max-height: 20rem;
+    min-height: 2rem;
+    padding: 0.5rem;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+
+.markdown-preview>div h1,
+.markdown-preview>div h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.markdown-preview>div h3,
+.markdown-preview>div h4,
+.markdown-preview>div h5,
+.markdown-preview>div h6 {
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.markdown-preview>div li {
+    margin-left: 2rem;
+}
+
+.markdown-preview>div pre {
+    color: white;
+    background-color: rgb(34, 34, 34);
+    max-width: 800px;
+    overflow: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.markdown-preview>div code {
+    background-color: rgba(135, 135, 135, 0.293);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin: 0 0.2rem;
+}
+
+.markdown-preview>div pre code {
+    word-break: break-all;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+
+.markdown-preview>div a {
+    color: rgb(106, 106, 255);
+    text-decoration: none;
+}
+
+.markdown-preview>div>.deployments {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.markdown-preview>div>.deployments a {
+    display: flex;
+    gap: 0.5rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: white;
+}
+
+.markdown-preview>div>.deployments a img {
+    width: 20px;
+}
+
+
+
+
+.list {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 100%);
+    height: fit-content;
+    max-height: 10rem;
+    background-color: white;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    width: 100%;
+}
+
+
+.list-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.list-item:last-child {
+    border-color: transparent;
+}
+
+.list-item:hover {
+    background-color: #ccc;
+}

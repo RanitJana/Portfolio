@@ -100,17 +100,13 @@ function ProfileEdit() {
 
       let { success, message } = await handleUpdateProfile(formData);
 
-
       if (success) {
-        setRenderUpdate(prev => !prev);
+        setRenderUpdate((prev) => !prev);
         toast.success(message);
-      }
-      else toast.warning(message);
-
+      } else toast.warning(message);
     } catch (error) {
-      toast.error(error?.message || "An error occurred")
-    }
-    finally {
+      toast.error(error?.message || "An error occurred");
+    } finally {
       setSubmit(false);
     }
   }
