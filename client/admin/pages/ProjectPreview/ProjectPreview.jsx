@@ -11,7 +11,7 @@ function ProjectPreview() {
   const { id } = useParams();
   const { toast } = useContext(toastContext);
   const navigate = useNavigate();
-  const [isDeleted,setDeleted] = useState(false);
+  const [isDeleted, setDeleted] = useState(false);
 
   const [idLoading, setLoading] = useState(true);
   const [projectData, setProjectData] = useState(null);
@@ -45,16 +45,16 @@ function ProjectPreview() {
       <div className="bottom">
         {projectData && projectData.length > 0
           ? projectData.map((val) => (
-            <ProjectCard
-              key={val._id}
-              _id={val._id}
-              description={val.description}
-              name={val.name}
-              thumbnail={val.thumbnail}
-              toast={toast}
-              setDelete={setDeleted}
-            />
-          ))
+              <ProjectCard
+                key={val._id}
+                _id={val._id}
+                description={val.description}
+                name={val.name}
+                thumbnail={val.thumbnail}
+                toast={toast}
+                setDeleted={setDeleted}
+              />
+            ))
           : "No project is found"}
       </div>
     </div>

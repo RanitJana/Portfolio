@@ -296,7 +296,7 @@ const handleDeleteProject = async function (_id) {
       {
         headers: {
           "Content-Type": "application/json",
-          "_id": _id
+          _id: _id,
         },
         withCredentials: true,
       }
@@ -323,5 +323,5 @@ export {
   handleUpdateTimeline,
   handleDeleteTimeline,
   handlePostProject,
-  handleDeleteProject
+  handleDeleteProject,
 };

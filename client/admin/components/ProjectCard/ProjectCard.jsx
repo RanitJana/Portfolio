@@ -13,7 +13,7 @@ export default function ProjectCard({
   _id = "",
   description = "",
   toast,
-  setDeleted
+  setDeleted,
 }) {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -22,25 +22,21 @@ export default function ProjectCard({
 
   const [isDeleting, setDeleting] = useState(false);
 
-
   const deleteProject = useCallback(async () => {
     try {
       setDeleting(true);
 
       let { success, message } = await handleDeleteProject(_id);
       if (success) {
-        setDeleted(prev => !prev);
+        setDeleted((prev) => !prev);
         toast.success(message);
-      }
-      else toast.warning(message);
-
+      } else toast.warning(message);
     } catch (error) {
-      toast.error(error.message || "An error occurred!")
-    }
-    finally {
+      toast.error(error.message || "An error occurred!");
+    } finally {
       setDeleting(false);
     }
-  }, [_id])
+  }, [_id]);
 
   return (
     <div className="projectCard">
@@ -64,9 +60,11 @@ export default function ProjectCard({
               {isOpenOption ? (
                 <>
                   <button>Edit</button>
-                  <button onClick={() => {
-                    if (!isDeleting) deleteProject();
-                  }} >
+                  <button
+                    onClick={() => {
+                      if (!isDeleting) deleteProject();
+                    }}
+                  >
                     {isDeleting ? <span className="loader"></span> : "Delete"}
                   </button>
                 </>

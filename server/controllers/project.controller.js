@@ -90,8 +90,7 @@ const handleDeleteProject = AsyncHandler(async (req, res, _) => {
 
   let project = await projectSchema.findById(projectId);
 
-  if (project.thumbnail != "")
-    await deleteImage(project.thumbnail);
+  if (project.thumbnail != "") await deleteImage(project.thumbnail);
 
   await project.deleteOne({ _id: projectId });
 
