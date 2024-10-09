@@ -1,15 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProjectCard.css";
 import getMarkdownText from "../../utils/ReadmeConverter.js";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { handleDeleteProject } from "../../utils/Apis.js";
 
 export default function ProjectCard({
   name = "",
   thumbnail = "",
   _id = "",
   description = "",
+  toast,
+  setDeleted
 }) {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,6 +21,26 @@ export default function ProjectCard({
   const [isOpenOption, setOpenOption] = useState(false);
 
   const [isDeleting, setDeleting] = useState(false);
+
+
+  const deleteProject = useCallback(async () => {
+    try {
+      setDeleting(true);
+
+      let { success, message } = await handleDeleteProject(_id);
+      if (success) {
+        setDeleted(prev => !prev);
+        toast.success(message);
+      }
+      else toast.warning(message);
+
+    } catch (error) {
+      toast.error(error.message || "An error occurred!")
+    }
+    finally {
+      setDeleting(false);
+    }
+  }, [_id])
 
   return (
     <div className="projectCard">
@@ -40,7 +64,9 @@ export default function ProjectCard({
               {isOpenOption ? (
                 <>
                   <button>Edit</button>
-                  <button>
+                  <button onClick={() => {
+                    if (!isDeleting) deleteProject();
+                  }} >
                     {isDeleting ? <span className="loader"></span> : "Delete"}
                   </button>
                 </>

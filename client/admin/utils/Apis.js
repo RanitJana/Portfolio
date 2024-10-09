@@ -289,6 +289,25 @@ const handlePostProject = async function (data) {
   }
 };
 
+const handleDeleteProject = async function (_id) {
+  try {
+    let response = await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/project`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "_id": _id
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response?.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -304,4 +323,5 @@ export {
   handleUpdateTimeline,
   handleDeleteTimeline,
   handlePostProject,
+  handleDeleteProject
 };

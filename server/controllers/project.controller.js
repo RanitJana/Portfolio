@@ -1,6 +1,6 @@
 import projectSchema from "../models/project.model.js";
 import AsyncHandler from "../utils/AsyncHandler.js";
-import uploadImage from "../utils/cloudinary.js";
+import uploadImage, { deleteImage } from "../utils/cloudinary.js";
 import fs from "fs";
 
 const handleAddproject = AsyncHandler(async (req, res, _) => {
@@ -88,7 +88,12 @@ const handleDeleteProject = AsyncHandler(async (req, res, _) => {
     });
   }
 
-  await projectSchema.findOneAndDelete({ _id: projectId });
+  let project = await projectSchema.findById(projectId);
+
+  if (project.thumbnail != "")
+    await deleteImage(project.thumbnail);
+
+  await project.deleteOne({ _id: projectId });
 
   return res.status(200).json({
     success: true,
