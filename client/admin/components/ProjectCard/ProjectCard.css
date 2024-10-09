@@ -20,6 +20,10 @@
         height: fit-content;
         grid-template-columns: 1fr;
     }
+
+    .projectCard>.content>.description {
+        min-height: 3.5rem;
+    }
 }
 
 .projectCard>.img {
@@ -29,7 +33,7 @@
     height: 13rem;
 }
 
-.projectCard>.img:hover{
+.projectCard>.img:hover {
     cursor: pointer;
 }
 
