@@ -30,7 +30,11 @@ function AdminProjects({ project = [] }) {
                     </td>
                     <td>
                       <button onClick={() => window.open(value.link, "_blank")}>
-                        Visit
+                        {
+                          value.link != "" ?
+                            "Visit" :
+                            "Not deployed"
+                            }
                       </button>
                     </td>
                   </tr>

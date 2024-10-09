@@ -10,18 +10,13 @@
 
 .project>.projectContainer {
     display: grid;
-    grid-template-columns: repeat(3, calc(100%/3));
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-@media only screen and (max-width:680px) {
+@media only screen and (max-width:600px) {
     .project>.projectContainer {
-        grid-template-columns: repeat(2, calc(100%/2));
-    }
-}
-
-@media only screen and (max-width:490px) {
-    .project>.projectContainer {
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
     }
 }
 
