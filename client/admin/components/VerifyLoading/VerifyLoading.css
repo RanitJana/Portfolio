@@ -1,8 +1,13 @@
 .verifyLoading {
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 100dvh;
-    width: 100%;
+    width: 100dvw;
     display: grid;
     place-items: center;
+    background-color: white;
+    z-index: 500;
 }
 
 

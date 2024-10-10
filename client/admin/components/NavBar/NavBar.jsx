@@ -1,8 +1,9 @@
 import "./NavBar.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { handleLogOut } from "../../utils/Apis.js";
-import { useContext, useRef, useEffect, useCallback } from "react";
+import { useContext, useRef, useEffect, useCallback, useState } from "react";
 import { toastContext } from "../../../src/Index.jsx";
+import VerifyLoading from "../VerifyLoading/VerifyLoading.jsx";
 
 function NavBar() {
   const { toast } = useContext(toastContext);
@@ -13,14 +14,22 @@ function NavBar() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  async function setLogOut() {
-    let { success, message } = await handleLogOut();
+  const [isLoggingOut, setLoggindOut] = useState(false);
 
-    if (success) {
+  async function setLogOut() {
+    try {
+      setLoggindOut(true);
+
+      let { message } = await handleLogOut();
+
       toast.success(message);
-      return navigate("/");
+
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message || "An error occured");
+    } finally {
+      setLoggindOut(false);
     }
-    toast.error(message);
   }
 
   function handleOpenNav() {
@@ -66,6 +75,8 @@ function NavBar() {
       window.removeEventListener("click", closeNav);
     };
   }, [closeNav, handleResize]);
+
+  if (isLoggingOut) return <VerifyLoading />;
 
   return (
     <>
