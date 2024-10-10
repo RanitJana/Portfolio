@@ -14,6 +14,8 @@
 .projectShow>.top {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     gap: 1rem;
     padding: 2rem 0;
     margin-bottom: 1rem;
@@ -23,12 +25,14 @@
 .projectShow>.top>.name {
     font-size: 2rem;
     font-weight: bold;
+    word-break: break-all;
 }
 
 .projectShow button {
     background-color: black;
     height: 2rem;
     width: 5rem;
+    min-width: 5rem;
     color: white;
     border-radius: 5px;
     border: none;

@@ -23,8 +23,6 @@ function ProjectShow() {
       if (!response || !response.data)
         throw new Error("Please try to refresh the page");
       else setData(response.data);
-
-      console.log(response.data);
     } catch (error) {
       toast.error(error?.message || "Pleasr try to refresh the page");
     } finally {
