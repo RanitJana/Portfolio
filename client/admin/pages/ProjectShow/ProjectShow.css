@@ -44,9 +44,10 @@
 }
 
 .projectShow>.bottom>.thumbnail {
-    display: grid;
-    place-items: center;
-    height: max(fit-content, 20rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
     overflow: hidden;
     margin-bottom: 3rem;
 }
@@ -128,9 +129,10 @@
     justify-content: space-between;
     background-color: black;
     border-radius: 5px;
-    padding:0.5rem 1rem;
+    padding: 0.5rem 1rem;
     color: white;
 }
-.projectShow>.bottom>.deployments a img{
+
+.projectShow>.bottom>.deployments a img {
     width: 20px;
 }

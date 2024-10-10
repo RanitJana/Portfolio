@@ -6,10 +6,22 @@
     z-index: 99;
 }
 
+.navBar a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0 0.5rem 0 0;
+}
+
 .navBar>.linkContainers {
     display: flex;
     flex-direction: column;
     width: fit-content;
+    gap: 0.25rem;
     height: 100dvh;
     max-height: 100dvh;
 
@@ -29,6 +41,10 @@
     transition: all 0.3s ease;
 }
 
+.navBar a {
+    transition: all 0.3s ease;
+}
+
 .navBar a img,
 .navBar button img,
 .navBar .dragToOpen img {
@@ -41,24 +57,35 @@
     border-radius: 50%;
 }
 
-/* .navBar .activeNav img, */
-.navBar a:not(.navBar .activeNav):hover img,
-.navBar .logout:hover img {
+.navBar a img {
+    background-color: transparent;
+}
+
+.navBar a:not(.navBar .activeNav):hover,
+.navBar .logout:hover {
     background-color: rgba(194, 194, 194, 0.362);
     cursor: pointer;
 }
 
-.navBar .activeNav img {
+.navBar .activeNav {
     filter: invert(100%);
+}
+
+.navBar .logout img {
+    background-color: transparent;
 }
 
 .navBar .logout {
     height: 2.5rem;
     width: 2.5rem;
-    border-radius: 50%;
+    border-radius: 10px;
     margin-top: auto;
     border: none;
     background-color: white;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 1rem;
 }
 
 .navBar .dragToOpen {
@@ -71,7 +98,7 @@
     border-right: 1px solid #ccc;
 }
 
-@media screen and (min-width:740px) {
+@media screen and (min-width:860px) {
     .navBar {
         justify-content: flex-start;
         gap: 0.2rem;
@@ -84,7 +111,7 @@
 
 }
 
-@media screen and (max-width:740px) {
+@media screen and (max-width:860px) {
     .navBar {
         position: fixed;
         transform: translate(-100%);
@@ -97,5 +124,16 @@
         right: 0;
         top: 0%;
         transform: translate(100%, 0%);
+    }
+
+    .blackScreen {
+        width: 100dvw;
+        height: 100dvh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.446);
+        scale: 0;
+        z-index: 98;
     }
 }
