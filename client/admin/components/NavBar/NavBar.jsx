@@ -1,23 +1,20 @@
-/* eslint-disable no-unused-vars */
 import "./NavBar.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { handleLogOut } from "../../utils/Apis.js";
-import { useState, useContext, useRef, useEffect, useCallback } from "react";
+import { useContext, useRef, useEffect, useCallback } from "react";
 import { toastContext } from "../../../src/Index.jsx";
 
 function NavBar() {
-  const [isLoading, setLoading] = useState(false);
   const { toast } = useContext(toastContext);
   const navRef = useRef(null);
   const openRef = useRef(null);
+  const blackScreenRef = useRef(null);
 
   const navigate = useNavigate();
   const { id } = useParams();
 
   async function setLogOut() {
-    setLoading(true);
     let { success, message } = await handleLogOut();
-    setLoading(false);
 
     if (success) {
       toast.success(message);
@@ -29,14 +26,16 @@ function NavBar() {
   function handleOpenNav() {
     navRef.current.classList.toggle("navBar--open");
     openRef.current.classList.toggle("rotated");
-    let open = document.querySelector(".blackScreen");
-    if (open.style.scale == 1) open.style.scale = 0;
-    else open.style.scale = 1;
+
+    if (blackScreenRef.current.style.scale == 1) {
+      blackScreenRef.current.style.scale = 0;
+    } else {
+      blackScreenRef.current.style.scale = 1;
+    }
   }
 
   const handleResize = useCallback(() => {
-    let open = document.querySelector(".blackScreen");
-    open.style.scale = 0;
+    blackScreenRef.current.style.scale = 0;
 
     if (window.innerWidth > 860) {
       navRef.current.classList.add("navBar--open");
@@ -47,19 +46,30 @@ function NavBar() {
     }
   }, []);
 
+  const closeNav = useCallback((e) => {
+    if (
+      blackScreenRef.current.style.scale === "1" &&
+      !navRef.current.contains(e.target)
+    ) {
+      handleOpenNav();
+    }
+  }, []);
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    window.addEventListener("click", closeNav);
 
     handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("click", closeNav);
     };
-  }, [handleResize]);
+  }, [closeNav, handleResize]);
 
   return (
     <>
-      <div className="blackScreen"></div>
+      <div className="blackScreen" ref={blackScreenRef}></div>
       <div className="navBar" ref={navRef}>
         <div className="dragToOpen" onClick={handleOpenNav}>
           <img ref={openRef} src="/Images/icons8-move-right-48.png" alt="" />
@@ -72,7 +82,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-home-48.png" alt="" />
             <span>Home</span>
-            {/* profilePreview */}
           </NavLink>
           <NavLink
             to={`/admin/${id}/project/manage`}
@@ -80,7 +89,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-add-folder-50.png" alt="" />
             <span>Project</span>
-            {/* projectCreate */}
           </NavLink>
           <NavLink
             to={`/admin/${id}/skill/manage`}
@@ -88,7 +96,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-design-100.png" alt="" />
             <span>Skill</span>
-            {/* SKillCreate */}
           </NavLink>
           <NavLink
             to={`/admin/${id}/timeline/manage`}
@@ -96,7 +103,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-delivery-time-48.png" alt="" />
             <span>Timeline</span>
-            {/* TimelineCreate */}
           </NavLink>
           <NavLink
             to={`/admin/${id}/message`}
@@ -104,7 +110,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-message-50 (1).png" alt="" />
             <span>Message</span>
-            {/* Message */}
           </NavLink>
           <NavLink
             to={`/admin/${id}/edit`}
@@ -112,7 +117,6 @@ function NavBar() {
           >
             <img src="/Images/icons8-user-100.png" alt="" />
             <span>Profile</span>
-            {/* ProfileEdit */}
           </NavLink>
           <button className="logout" onClick={setLogOut}>
             <img src="/Images/icons8-log-out-100.png" alt="" />
