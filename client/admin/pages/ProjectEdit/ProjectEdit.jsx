@@ -77,8 +77,7 @@ function ProjectEdit() {
         setSubmit(true);
 
         let formData = new FormData();
-
-        formData.append("thumbnail", thumbnail);
+        if (thumbnail) formData.append("thumbnail", thumbnail);
         formData.append("name", info.name);
         formData.append("description", info.description);
         formData.append("tech", info.tech.join(","));
@@ -90,10 +89,8 @@ function ProjectEdit() {
           formData
         );
 
-        if (success) {
-          handleClear();
-          toast.success(message);
-        } else toast.warning(message);
+        if (success) toast.success(message);
+        else toast.warning(message);
       } catch (error) {
         toast.error(error.message || "Please try again");
       } finally {
