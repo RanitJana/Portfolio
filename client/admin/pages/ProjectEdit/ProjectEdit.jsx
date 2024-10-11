@@ -156,7 +156,6 @@ function ProjectEdit() {
     (async () => {
       try {
         let response = (await handleSingleProject(projectId)).data;
-        console.log(response);
         setInfo({
           name: response.name,
           description: response.description,
