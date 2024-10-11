@@ -308,6 +308,26 @@ const handleDeleteProject = async function (_id) {
   }
 };
 
+const handleUpdateProject = async function (projectId, data) {
+  try {
+    let response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/project`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          _id: projectId,
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response?.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -324,4 +344,5 @@ export {
   handleDeleteTimeline,
   handlePostProject,
   handleDeleteProject,
+  handleUpdateProject,
 };

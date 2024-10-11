@@ -58,7 +58,13 @@ export default function ProjectCard({
             <div className="more">
               {isOpenOption ? (
                 <>
-                  <button>Edit</button>
+                  <button
+                    onClick={() =>
+                      navigate(`/admin/${id}/project/manage/${_id}/edit`)
+                    }
+                  >
+                    Edit
+                  </button>
                   <button
                     onClick={() => {
                       if (!isDeleting) deleteProject();

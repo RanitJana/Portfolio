@@ -1,5 +1,7 @@
 .singleProject>img {
     width: 100%;
+    max-height: 30rem;
+    object-fit: contain;
     margin: 2rem 0;
     border: 5px solid white;
     border-radius: 5px;

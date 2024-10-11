@@ -14,7 +14,7 @@ const router = express.Router();
 router.get("/:adminId", handleGetProject);
 router.get("/single/:id", handleGetSingleProject);
 router.post("/", verifyUser, upload.single("thumbnail"), handleAddproject);
-router.put("/", verifyUser, handleUpdateProject);
+router.put("/", verifyUser, upload.single("thumbnail"), handleUpdateProject);
 router.delete("/", verifyUser, handleDeleteProject);
 
 export default router;

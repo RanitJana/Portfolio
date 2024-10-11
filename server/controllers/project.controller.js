@@ -44,36 +44,57 @@ const handleAddproject = AsyncHandler(async (req, res, _) => {
 
 const handleUpdateProject = AsyncHandler(async (req, res, _) => {
   //id must be add into header as key _id
-  const {
-    name,
-    thumbnail,
-    description,
-    tech,
-    github = "",
-    link = "",
-  } = req.body;
+  const { name, description, tech, github = "", link = "" } = req.body;
+
+  if (!name || !description || !tech) {
+    fs.unlinkSync(`${req.file.path}`);
+
+    return res.status(400).json({
+      success: false,
+      message: "Please fill all the required fields",
+    });
+  }
 
   let projectId = req.headers?._id;
 
   if (!projectId) {
-    return res.status(401).json({
+    return res.status(401).josn({
       success: false,
-      message: "Please select a valid project",
+      message: "Please choose a valid project",
     });
   }
 
-  await projectSchema.findOneAndUpdate({
-    name,
-    thumbnail,
-    description,
-    tech,
-    github,
-    link,
-  });
+  let project = await projectSchema.findById(projectId);
+
+  if (!project) {
+    return res.status(401).josn({
+      success: false,
+      message: "Please choose a valid project",
+    });
+  }
+
+  if (req.file) {
+    await deleteImage(project.thumbnail);
+
+    let secure_url = (await uploadImage(req.file.path, req.file.filename))
+      .secure_url;
+
+    project.thumbnail = secure_url;
+
+    fs.unlinkSync(`${req.file.path}`);
+  }
+
+  project.name = name;
+  project.description = description;
+  project.tech = tech;
+  project.github = github;
+  project.link = link;
+
+  project.save({ validateBeforeSave: false });
 
   return res.status(200).json({
-    success: false,
-    message: "Project updated successfully",
+    success: true,
+    message: "Project Updated successfully",
   });
 });
 
