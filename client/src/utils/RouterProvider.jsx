@@ -25,6 +25,7 @@ import {
   Route,
   createRoutesFromElements,
 } from "react-router-dom";
+import Password from "../../admin/pages/Password/Password.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
           <Route path="timeline/manage" element={<ManageTimeline />} />
           <Route path="message" element={<MessagePreview />} />
           <Route path="edit" element={<ProfileEdit />} />
+          <Route path="password" element={<Password />} />
           <Route path="*" element={<Error error={404} />} />
         </Route>
         <Route path="*" element={<Error error={404} />} />

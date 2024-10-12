@@ -20,7 +20,7 @@
 
 .manageTimeline>.top>button {
     height: 2rem;
-    padding: 0 2rem;
+    width: 5rem;
     background-color: black;
     color: white;
     border-radius: 5px;

@@ -2,3 +2,7 @@
     font-family: "Montserrat Alternates";
     background-color: #f1f1f1;
 }
+
+button:hover {
+    cursor: pointer;
+}

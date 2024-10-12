@@ -52,7 +52,23 @@ function ManageSkill() {
       <div className="adminSkills">
         <div className="top">
           <h2>Skills</h2>
-          <button onClick={() => setAddBox(true)}>Add</button>
+          <button
+            onClick={() => setAddBox(true)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.25rem",
+            }}
+          >
+            <img
+              src="/Images/icons8-add-100.png"
+              alt=""
+              width={20}
+              style={{ filter: "invert(100%)" }}
+            />
+            <span>Add</span>
+          </button>
         </div>
         {skills && skills.length > 0 ? (
           <ul className="childSkill">

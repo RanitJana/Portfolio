@@ -129,6 +129,13 @@ function NavBar() {
             <img src="/Images/icons8-user-100.png" alt="" />
             <span>Profile</span>
           </NavLink>
+          <NavLink
+            to={`/admin/${id}/password`}
+            className={({ isActive }) => (isActive ? "activeNav" : "")}
+          >
+            <img src="/Images/icons8-password-50.png" alt="" />
+            <span>Password</span>
+          </NavLink>
           <button className="logout" onClick={setLogOut}>
             <img src="/Images/icons8-log-out-100.png" alt="" />
             <span>Log out</span>

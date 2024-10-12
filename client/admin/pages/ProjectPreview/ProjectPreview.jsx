@@ -38,8 +38,22 @@ function ProjectPreview() {
     <div className="projectPreview">
       <div className="top">
         <h2>Projects</h2>
-        <button onClick={() => navigate(`/admin/${id}/project/manage/add`)}>
-          Add
+        <button
+          onClick={() => navigate(`/admin/${id}/project/manage/add`)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.25rem",
+          }}
+        >
+          <img
+            src="/Images/icons8-add-100.png"
+            alt=""
+            width={20}
+            style={{ filter: "invert(100%)" }}
+          />
+          <span>Add</span>
         </button>
       </div>
       <div className="bottom">

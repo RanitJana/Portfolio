@@ -51,7 +51,23 @@ function ManageTimeline() {
       )}
       <div className="top">
         <h2>Timeline</h2>
-        <button onClick={() => setAddOpen(true)}>Add</button>
+        <button
+          onClick={() => setAddOpen(true)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.25rem",
+          }}
+        >
+          <img
+            src="/Images/icons8-add-100.png"
+            alt=""
+            width={20}
+            style={{ filter: "invert(100%)" }}
+          />
+          <span>Add</span>
+        </button>
       </div>
       <div className="bottom">
         {data && data.length > 0
