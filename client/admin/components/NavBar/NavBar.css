@@ -9,7 +9,7 @@
 .navBar a {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: flex-start;
     color: black;
     background-color: white;
     text-decoration: none;
@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-    gap: 0.25rem;
+    gap: 0.5rem;
     height: 100dvh;
     max-height: 100dvh;
 
@@ -86,7 +86,11 @@
     display: flex;
     width: 100%;
     align-items: center;
-    font-size: 1rem;
+}
+
+.navBar a span,
+.navBar .logout {
+    font-size: 0.8rem;
 }
 
 .navBar .dragToOpen {

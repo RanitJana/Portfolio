@@ -133,7 +133,7 @@ function NavBar() {
             to={`/admin/${id}/password`}
             className={({ isActive }) => (isActive ? "activeNav" : "")}
           >
-            <img src="/Images/icons8-password-50.png" alt="" />
+            <img src="/Images/icons8-password-100.png" alt="" />
             <span>Password</span>
           </NavLink>
           <button className="logout" onClick={setLogOut}>
