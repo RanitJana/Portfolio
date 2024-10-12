@@ -77,6 +77,7 @@ function Login() {
             <div className="pasword">
               <span>Password</span>
               <Link
+                to="/forgetPassword"
                 style={{
                   position: "absolute",
                   right: 0,

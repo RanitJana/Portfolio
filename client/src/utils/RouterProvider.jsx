@@ -26,6 +26,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import Password from "../../admin/pages/Password/Password.jsx";
+import ForgetPassword from "../../admin/pages/ForgetPassword/ForgetPassword.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         <Route path=":id/project" element={<ProjectPage />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="forgetPassword" element={<ForgetPassword />} />
         <Route path="*" element={<Error error={404} />} />
       </Route>
       <Route path="/admin" element={<Admin />}>
