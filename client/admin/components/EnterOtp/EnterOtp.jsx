@@ -16,6 +16,7 @@ function EnterOtp({ otp, setOtp, toast }) {
       toast.error(error.message || "Please try again");
     } finally {
       inputs.current.forEach((val) => (val.value = ""));
+      setOtp((prev) => ({ ...prev, loading: false }));
     }
   }, []);
 
