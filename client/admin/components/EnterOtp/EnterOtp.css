@@ -1,13 +1,22 @@
 .enterOtp {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enterOtp>div {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
 }
 
 .enterOtp input {
-    width: 100%;
+    width: 2.5rem;
     display: flex;
     font-size: large;
+    text-align: center;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

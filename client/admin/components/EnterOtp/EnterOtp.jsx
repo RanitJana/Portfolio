@@ -46,19 +46,23 @@ function EnterOtp({ otp, setOtp, toast }) {
 
   return (
     <div className="enterOtp">
-      {Array(6)
-        .fill("")
-        .map((_, index) => (
-          <input
-            readOnly={otp.loading}
-            key={index}
-            type="text"
-            maxLength="1"
-            ref={(el) => (inputs.current[index] = el)}
-            onChange={(e) => handleChange(e, index)}
-            onKeyDown={(e) => handleKeyDown(e, index)}
-          />
-        ))}
+      <p>Check your email</p>
+      <div>
+        {Array(4)
+          .fill("-")
+          .map((_, index) => (
+            <input
+              placeholder="-"
+              readOnly={otp.loading}
+              key={index}
+              type="text"
+              maxLength="1"
+              ref={(el) => (inputs.current[index] = el)}
+              onChange={(e) => handleChange(e, index)}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+            />
+          ))}
+      </div>
     </div>
   );
 }

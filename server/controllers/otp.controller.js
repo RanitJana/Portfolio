@@ -22,7 +22,7 @@ const handleSendOTP = AsyncHandler(async (req, res, _) => {
     });
   }
 
-  let newOtp = crypto.randomInt(100000, 999999);
+  let newOtp = crypto.randomInt(1000, 9999);
 
   let otpDoc = await otpSchema.create({ email, otp: newOtp });
 
@@ -68,9 +68,11 @@ const handleVerifyOTP = AsyncHandler(async (req, res, _) => {
     });
   }
 
+  let email = otpDoc.email;
+
   await otpDoc.deleteOne();
 
-  return res.status(200).json({
+  return res.status(200).clearCookie("pid").cookie("eid", email).json({
     success: true,
     message: "Verified",
   });

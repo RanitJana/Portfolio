@@ -4,6 +4,7 @@ import "./ForgetPassword.css";
 import { toastContext } from "../../../src/Index.jsx";
 import { handleGetOtp } from "../../utils/Otp.js";
 import EnterOtp from "../../components/EnterOtp/EnterOtp.jsx";
+import NewPassword from "../../components/NewPassword/NewPassword.jsx";
 
 function ForgetPassword() {
   const { toast } = useContext(toastContext);
@@ -44,6 +45,7 @@ function ForgetPassword() {
             <form onSubmit={getOtp}>
               <label htmlFor="email">Email</label>
               <input
+                placeholder="Enter your registered email"
                 type="email"
                 name=""
                 id="email"
@@ -61,7 +63,7 @@ function ForgetPassword() {
         ) : !otp.valid ? (
           <EnterOtp otp={otp} setOtp={setOtp} toast={toast} />
         ) : (
-          ""
+          <NewPassword toast={toast} />
         )}
       </div>
     </div>

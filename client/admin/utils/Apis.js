@@ -347,6 +347,25 @@ const handleUpdatePassword = async function (data) {
   }
 };
 
+const handleForgetPassword = async function (data) {
+  try {
+    let response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URI}/v1/password/change`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    return error.response?.data;
+  }
+};
+
 export {
   handleLogin,
   handleSignUp,
@@ -365,4 +384,5 @@ export {
   handleDeleteProject,
   handleUpdateProject,
   handleUpdatePassword,
+  handleForgetPassword,
 };
