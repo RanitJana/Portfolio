@@ -1,8 +1,11 @@
-
 # Portfolio
 
 ## Description
 It is a web application that allows users to create and customize their own portfolios. Unlike traditional portfolio sites that focus on a single individual, this platform enables anyone to modify and manage their own information, creating a personalized portfolio that showcases their skills, projects, and experiences.
+
+## Preview
+<img src="./assets/17.png" />
+<img src="./assets/1.jpg" width="300"/>
 
 ## Features
 - **User Authentication**: Secure registration and login system.
