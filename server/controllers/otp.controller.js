@@ -3,6 +3,7 @@ import AsyncHandler from "../utils/AsyncHandler.js";
 import otpSchema from "../models/otp.model.js";
 import adminSchema from "../models/admin.model.js";
 import sendMail from "../utils/Mail.js";
+import { cookieOptions } from "../constants.js";
 
 const handleSendOTP = AsyncHandler(async (req, res, _) => {
   const { email } = req.body;
@@ -28,7 +29,7 @@ const handleSendOTP = AsyncHandler(async (req, res, _) => {
 
   await sendMail(email, newOtp);
 
-  return res.status(200).cookie("pid", otpDoc._id).json({
+  return res.status(200).cookie("pid", otpDoc._id, cookieOptions).json({
     success: true,
     message: "Otp has been sent successfully",
   });
@@ -72,10 +73,14 @@ const handleVerifyOTP = AsyncHandler(async (req, res, _) => {
 
   await otpDoc.deleteOne();
 
-  return res.status(200).clearCookie("pid").cookie("eid", email).json({
-    success: true,
-    message: "Verified",
-  });
+  return res
+    .status(200)
+    .clearCookie("pid", cookieOptions)
+    .cookie("eid", email, cookieOptions)
+    .json({
+      success: true,
+      message: "Verified",
+    });
 });
 
 export { handleSendOTP, handleVerifyOTP };
