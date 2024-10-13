@@ -106,8 +106,6 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request if you would like to contribute.
 
-## Contact
-Your contact information or links to your profile for users who may have questions or feedback.
 ### Instructions:
 - Replace the placeholders (`***`) in the `.env` sections with your actual configuration values before starting the program.
 - EMAIL_PASS is the app password that you'll get from google manage account. EMAIL_USER is the same email account ( eg. abcd@gmail.com ).
