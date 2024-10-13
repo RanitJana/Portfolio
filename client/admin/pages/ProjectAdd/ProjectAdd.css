@@ -231,6 +231,10 @@
     margin: 0;
 }
 
+.markdown-preview>div img {
+    max-width: 100%;
+}
+
 .markdown-preview>div a {
     color: rgb(106, 106, 255);
     text-decoration: none;

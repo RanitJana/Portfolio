@@ -85,6 +85,10 @@
     margin-left: 2rem;
 }
 
+.projectShow>.bottom img {
+    max-width: 100%;
+}
+
 .projectShow>.bottom pre {
     color: white;
     background-color: rgb(34, 34, 34);
