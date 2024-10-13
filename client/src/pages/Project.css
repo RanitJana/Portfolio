@@ -103,6 +103,10 @@
     line-height: 1.5rem;
 }
 
+.singleProject>.preview img {
+    max-width: 100%;
+}
+
 .singleProject>.preview h1,
 .singleProject>.preview h2 {
     border-bottom: 1px solid white;
