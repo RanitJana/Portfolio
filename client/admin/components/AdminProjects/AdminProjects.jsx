@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "./AdminProjects.css";
 
 function AdminProjects({ project = [] }) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <div className="adminProjects">
       <h2>Projects</h2>
@@ -15,7 +16,7 @@ function AdminProjects({ project = [] }) {
               <tr>
                 <th>Title</th>
                 <th>Deployed</th>
-                <th>Update</th>
+                <th>Modify</th>
                 <th>Visit</th>
               </tr>
             </thead>
@@ -26,7 +27,7 @@ function AdminProjects({ project = [] }) {
                     <td>{value.name}</td>
                     <td>{value.link != "" ? "Yes" : "No"}</td>
                     <td>
-                      <button>Update</button>
+                      <button onClick={() => navigate(`${location.pathname}/project/manage/${value._id}/edit`)} >Update</button>
                     </td>
                     <td>
                       <button onClick={() => window.open(value.link, "_blank")}>
