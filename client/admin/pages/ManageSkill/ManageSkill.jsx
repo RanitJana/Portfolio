@@ -4,13 +4,12 @@ import EditSkill from "../../components/EditSkill/EditSkill.jsx";
 import { handleSkills } from "../../../src/utils/Apis.js";
 import { toastContext } from "../../../src/Index.jsx";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AdminSkeleton from "../../components/AdminSkeleton/AdminSkeleton.jsx";
 import SkillCreate from "../../components/SkillCreate/SkillCreate.jsx";
 
 function ManageSkill() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { toast } = useContext(toastContext);
   const [isLoading, setLoading] = useState(true);
@@ -84,8 +83,22 @@ function ManageSkill() {
         ) : (
           <p className="noTimeline">
             <span>No Skill is found</span>
-            <button onClick={() => navigate(`/admin/${id}/skill/create`)}>
-              Add Skill
+            <button
+              onClick={() => setAddBox(true)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.25rem",
+              }}
+            >
+              <img
+                src="/Images/icons8-add-100.png"
+                alt=""
+                width={20}
+                style={{ filter: "invert(100%)" }}
+              />
+              <span>Add</span>
             </button>
           </p>
         )}

@@ -57,19 +57,40 @@ function ProjectPreview() {
         </button>
       </div>
       <div className="bottom">
-        {projectData && projectData.length > 0
-          ? projectData.map((val) => (
-              <ProjectCard
-                key={val._id}
-                _id={val._id}
-                description={val.description}
-                name={val.name}
-                thumbnail={val.thumbnail}
-                toast={toast}
-                setDeleted={setDeleted}
+        {projectData && projectData.length > 0 ? (
+          projectData.map((val) => (
+            <ProjectCard
+              key={val._id}
+              _id={val._id}
+              description={val.description}
+              name={val.name}
+              thumbnail={val.thumbnail}
+              toast={toast}
+              setDeleted={setDeleted}
+            />
+          ))
+        ) : (
+          <div className="noProjectIsFound">
+            <span>No Project is found</span>
+            <button
+              onClick={() => navigate(`/admin/${id}/project/manage/add`)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.25rem",
+              }}
+            >
+              <img
+                src="/Images/icons8-add-100.png"
+                alt=""
+                width={20}
+                style={{ filter: "invert(100%)" }}
               />
-            ))
-          : "No project is found"}
+              <span>Add</span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

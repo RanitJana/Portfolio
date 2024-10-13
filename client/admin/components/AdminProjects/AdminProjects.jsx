@@ -41,7 +41,7 @@ function AdminProjects({ project = [] }) {
         ) : (
           <p className="noProject">
             <span>No project is found</span>
-            <button onClick={() => navigate(`/admin/${id}/project/create`)}>
+            <button onClick={() => navigate(`/admin/${id}/project/manage/add`)}>
               Add a project!
             </button>
           </p>

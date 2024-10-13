@@ -38,7 +38,7 @@ function AdminTimeline({ timeline = [] }) {
         ) : (
           <p className="noTimeline">
             <span>No Timeline is found</span>
-            <button onClick={() => navigate(`/admin/${id}/timeline/create`)}>
+            <button onClick={() => navigate(`/admin/${id}/timeline/manage`)}>
               Add Timeline!
             </button>
           </p>

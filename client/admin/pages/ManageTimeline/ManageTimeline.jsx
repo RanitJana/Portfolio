@@ -70,21 +70,42 @@ function ManageTimeline() {
         </button>
       </div>
       <div className="bottom">
-        {data && data.length > 0
-          ? data.map((val) => {
-              return (
-                <TimelineCard
-                  key={val._id}
-                  title={val.title}
-                  description={val.description}
-                  from={val.from}
-                  to={val.to}
-                  id={val._id}
-                  setDeleteTimeline={setDeleteTimeline}
-                />
-              );
-            })
-          : ""}
+        {data && data.length > 0 ? (
+          data.map((val) => {
+            return (
+              <TimelineCard
+                key={val._id}
+                title={val.title}
+                description={val.description}
+                from={val.from}
+                to={val.to}
+                id={val._id}
+                setDeleteTimeline={setDeleteTimeline}
+              />
+            );
+          })
+        ) : (
+          <p className="noTimeline" style={{ paddingTop: "1rem" }}>
+            <span>No Timeline is found</span>
+            <button
+              onClick={() => setAddOpen(true)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.25rem",
+              }}
+            >
+              <img
+                src="/Images/icons8-add-100.png"
+                alt=""
+                width={20}
+                style={{ filter: "invert(100%)" }}
+              />
+              <span>Add</span>
+            </button>
+          </p>
+        )}
       </div>
     </div>
   );

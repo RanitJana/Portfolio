@@ -1,15 +1,18 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import "./TopScrollBar.css";
 
 function TopScrollBar() {
   const barRef = useRef(null);
+  const location = useLocation();
 
   const updateScrollProgress = () => {
     const totalScroll = document.documentElement.scrollTop;
     const windowHeight =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    const scroll = Math.ceil((totalScroll / windowHeight) * 100);
+    const scroll =
+      windowHeight > 0 ? Math.ceil((totalScroll / windowHeight) * 100) : 0;
 
     if (barRef.current) {
       barRef.current.style.width = `${scroll}%`;
@@ -46,6 +49,10 @@ function TopScrollBar() {
 
     return () => window.removeEventListener("scroll", throttledUpdateScroll);
   }, []);
+
+  useEffect(() => {
+    updateScrollProgress();
+  }, [location.pathname]);
 
   return <div ref={barRef} className="topScrollBar"></div>;
 }

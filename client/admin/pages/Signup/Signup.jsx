@@ -33,6 +33,7 @@ function Login() {
 
     if (fieldValue.fullName === "") {
       fieldRef.current.fullNameRef.style.borderColor = "red";
+      fieldRef.current.fullNameRef.focus();
       setTimeout(() => {
         fieldRef.current.fullNameRef.style.borderColor = "gray";
       }, 1500);
@@ -40,16 +41,9 @@ function Login() {
       return toast.warning("Please enter your name");
     }
 
-    if (fieldValue.email === "") {
-      fieldRef.current.emailRef.style.borderColor = "red";
-      setTimeout(() => {
-        fieldRef.current.emailRef.style.borderColor = "gray";
-      }, 1500);
-      setSubmit(false);
-      return toast.warning("Please enter your email");
-    }
     if (fieldValue.phoneNumber === "") {
       fieldRef.current.phoneNumberRef.style.borderColor = "red";
+      fieldRef.current.phoneNumberRef.focus();
       setTimeout(() => {
         fieldRef.current.phoneNumberRef.style.borderColor = "gray";
       }, 1500);
@@ -57,8 +51,19 @@ function Login() {
       return toast.warning("Please enter your phone number");
     }
 
+    if (fieldValue.email === "") {
+      fieldRef.current.emailRef.style.borderColor = "red";
+      fieldRef.current.emailRef.focus();
+      setTimeout(() => {
+        fieldRef.current.emailRef.style.borderColor = "gray";
+      }, 1500);
+      setSubmit(false);
+      return toast.warning("Please enter your email");
+    }
+
     if (fieldValue.password === "") {
       fieldRef.current.passwordRef.style.borderColor = "red";
+      fieldRef.current.passwordRef.focus();
       setTimeout(() => {
         fieldRef.current.passwordRef.style.borderColor = "gray";
       }, 1500);
@@ -68,6 +73,7 @@ function Login() {
 
     if (fieldValue.confirmPassword === "") {
       fieldRef.current.confirmPasswordRef.style.borderColor = "red";
+      fieldRef.current.confirmPasswordRef.focus();
       setTimeout(() => {
         fieldRef.current.confirmPasswordRef.style.borderColor = "gray";
       }, 1500);
@@ -78,6 +84,7 @@ function Login() {
     if (fieldValue.password !== fieldValue.confirmPassword) {
       fieldRef.current.passwordRef.style.borderColor = "red";
       fieldRef.current.confirmPasswordRef.style.borderColor = "red";
+      fieldRef.current.confirmPasswordRef.focus();
       setTimeout(() => {
         fieldRef.current.passwordRef.style.borderColor = "gray";
         fieldRef.current.confirmPasswordRef.style.borderColor = "gray";
@@ -89,25 +96,30 @@ function Login() {
       return toast.warning("Password did not match");
     }
 
-    let { success, message } = await handleSignUp(
-      fieldValue.fullName,
-      fieldValue.email,
-      fieldValue.phoneNumber,
-      fieldValue.password,
-      fieldValue.confirmPassword
-    );
-    setSubmit(false);
-    if (!success) return toast.error(message);
-
-    setFieldValue(() => ({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-    }));
-
-    return toast.success(message);
+    try {
+      let { success, message } = await handleSignUp(
+        fieldValue.fullName,
+        fieldValue.email,
+        fieldValue.phoneNumber,
+        fieldValue.password,
+        fieldValue.confirmPassword
+      );
+      if (success) {
+        setFieldValue(() => ({
+          fullName: "",
+          email: "",
+          phoneNumber: "",
+          password: "",
+          confirmPassword: "",
+        }));
+        toast.success(message);
+        navigate("/login");
+      } else toast.warning(message);
+    } catch (error) {
+      toast.error(error?.message || "Please try again");
+    } finally {
+      setSubmit(false);
+    }
   }
 
   return (
@@ -167,7 +179,7 @@ function Login() {
                 value={fieldValue.email}
               />
             </div>
-            <div className="password">
+            <div className="password1">
               <span>Password</span>
               <input
                 ref={(el) => (fieldRef.current.passwordRef = el)}

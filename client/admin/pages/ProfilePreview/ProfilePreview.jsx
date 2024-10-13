@@ -121,7 +121,7 @@ function ProfilePreview() {
         ) : (
           <p className="noTimeline">
             <span>No Skill is found</span>
-            <button onClick={() => navigate(`/admin/${id}/skill/create`)}>
+            <button onClick={() => navigate(`/admin/${id}/skill/manage`)}>
               Add Skills
             </button>
           </p>
