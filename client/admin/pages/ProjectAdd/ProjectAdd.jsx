@@ -115,6 +115,10 @@ function ProjectAdd() {
     let newArr = info.tech;
     newArr.push("");
     setInfo((prev) => ({ ...prev, tech: newArr }));
+    setTimeout(() => {
+      let inputs = document.querySelectorAll(".skillField input");
+      inputs[inputs.length - 1].focus();
+    }, 0);
   }
 
   function handleEraseSkill(index) {
