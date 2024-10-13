@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 function ParticlesComponent() {
   const [init, setInit] = useState(false);
-  // this should be run only once per application lifetime
+
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -28,7 +28,7 @@ function ParticlesComponent() {
               },
               links: {
                 color: "#ffffff",
-                distance: 200,
+                distance: 160,
                 enable: true,
                 opacity: 0.3,
                 width: 1,
@@ -46,12 +46,12 @@ function ParticlesComponent() {
               number: {
                 density: {
                   enable: true,
-                  area: 800,
+                  area: 600,
                 },
                 value: 200,
               },
               opacity: {
-                value: 0.3,
+                value: 0.2,
               },
               shape: {
                 type: "circle",
